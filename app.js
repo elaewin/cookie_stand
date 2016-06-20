@@ -6,7 +6,7 @@
 // Capitol Hill	20	38	2.3
 // Alki	2	16	4.6
 
-// var allStores = ['firstAndPike', 'seatac', 'seattleCenter', 'capitolHill', 'alki'];
+
 
 var firstAndPike = {
   storeName: 'firstAndPike',
@@ -23,6 +23,10 @@ var firstAndPike = {
   hourlyProjectedCookiesSold: [],
   dailySalesTotal: 0
 };
+
+var allStores = [firstAndPike];
+
+// , 'seatac', 'seattleCenter', 'capitolHill', 'alki'
 
 // Returns a random integer between min (included) and max (included)
 // Using Math.round() will give you a non-uniform distribution!
@@ -70,14 +74,15 @@ function createOpenHours(store) {
   }
 }
 
-// function generateSalesNumbers() {
-//   for (var i = 0; i < allStores.length; i++) {
-//     var store = allStores[i].storeName;
-//     generateHourlyTraffic(store);
-//     projectedHourlySales(store);
-//     projectedHourlySales(store);
-//     createOpenHours(store);
-//   }
-// }
-//
-// generateSalesNumbers();
+// Generate sales numbers for each store in an array of store names
+function generateSalesNumbers() {
+  for (var i = 0; i < allStores.length; i++) {
+    var store = allStores[i];
+    generateHourlyTraffic(store);
+    projectedHourlySales(store);
+    projectedHourlySales(store);
+    createOpenHours(store);
+  }
+}
+
+generateSalesNumbers();
