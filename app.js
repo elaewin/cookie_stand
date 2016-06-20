@@ -1,13 +1,3 @@
-// Stores needed:
-// Location	Min / Cust	Max / Cust	Avg Cookie / Sale
-// 1st and Pike	23	65	6.3
-// SeaTac Airport	3	24	1.2
-// Seattle Center	11	38	3.7
-// Capitol Hill	20	38	2.3
-// Alki	2	16	4.6
-
-
-
 var firstAndPike = {
   storeName: 'firstAndPike',
   storeNamePretty: '1st and Pike',
@@ -18,15 +8,78 @@ var firstAndPike = {
   openHours: [],
   minHourlyCustomers: 23,
   maxHourlyCustomers: 65,
+  averageCookiesSold: 6.3,
+  hourlyProjectedCustomers: [],
+  hourlyProjectedCookiesSold: [],
+  dailySalesTotal: 0
+};
+
+var seatac = {
+  storeName: 'seatac',
+  storeNamePretty: 'Seatac Airport',
+  storeAddress: 'Concourse D, 17801 International Blvd, Seattle, WA 98158',
+  storePhone: '425-xxx-xxxx',
+  storeOpens: 6, // time the store opens, 24 hour clock
+  storeCloses: 20, // time the store closes, 24 hour clock
+  openHours: [],
+  minHourlyCustomers: 3,
+  maxHourlyCustomers: 24,
   averageCookiesSold: 1.2,
   hourlyProjectedCustomers: [],
   hourlyProjectedCookiesSold: [],
   dailySalesTotal: 0
 };
 
-var allStores = [firstAndPike];
+var seattleCenter = {
+  storeName: 'seattleCenter',
+  storeNamePretty: 'Seattle Center',
+  storeAddress: '305 Harrison St, Seattle, WA 98109',
+  storePhone: '206-xxx-xxxx',
+  storeOpens: 6, // time the store opens, 24 hour clock
+  storeCloses: 20, // time the store closes, 24 hour clock
+  openHours: [],
+  minHourlyCustomers: 11,
+  maxHourlyCustomers: 38,
+  averageCookiesSold: 3.7,
+  hourlyProjectedCustomers: [],
+  hourlyProjectedCookiesSold: [],
+  dailySalesTotal: 0
+};
 
-// , 'seatac', 'seattleCenter', 'capitolHill', 'alki'
+var capitolHill = {
+  storeName: 'capitolHill',
+  storeNamePretty: 'Capitol Hill',
+  storeAddress: '434 Broadway Avenue E, Seattle, WA 98102',
+  storePhone: '206-xxx-xxxx',
+  storeOpens: 6, // time the store opens, 24 hour clock
+  storeCloses: 20, // time the store closes, 24 hour clock
+  openHours: [],
+  minHourlyCustomers: 20,
+  maxHourlyCustomers: 38,
+  averageCookiesSold: 2.3,
+  hourlyProjectedCustomers: [],
+  hourlyProjectedCookiesSold: [],
+  dailySalesTotal: 0
+};
+
+var alki = {
+  storeName: 'alki',
+  storeNamePretty: 'Alki',
+  storeAddress: '2742 Alki Ave SW; Seattle, WA 98116',
+  storePhone: '206-xxx-xxxx',
+  storeOpens: 6, // time the store opens, 24 hour clock
+  storeCloses: 20, // time the store closes, 24 hour clock
+  openHours: [],
+  minHourlyCustomers: 2,
+  maxHourlyCustomers: 16,
+  averageCookiesSold: 4.6,
+  hourlyProjectedCustomers: [],
+  hourlyProjectedCookiesSold: [],
+  dailySalesTotal: 0
+};
+
+// Array of the object for each store
+var allStores = [firstAndPike, seatac, seattleCenter, capitolHill, alki];
 
 // Returns a random integer between min (included) and max (included)
 // Using Math.round() will give you a non-uniform distribution!
@@ -39,7 +92,7 @@ function generateHourlyTraffic(store) {
   var openHours = store.storeCloses - store.storeOpens;
   for (var i = 0; i < openHours; i++) {
     var customers = getRandomIntInclusive(store.minHourlyCustomers, store.maxHourlyCustomers);
-    console.log(customers);
+    console.log('hourly customers at ' + (i + 6) + ' to ' + (i + 7) + ': ' + customers);
     store.hourlyProjectedCustomers.push(customers);
   }
 }
@@ -48,8 +101,8 @@ function generateHourlyTraffic(store) {
 function projectedHourlySales(store) {
   var hourlyCookieAverage = store.averageCookiesSold;
   for (var i = 0; i < store.hourlyProjectedCustomers.length; i++) {
-    var cookies = store.hourlyProjectedCustomers[i] * store.averageCookiesSold;
-    console.log(cookies);
+    var cookies = Math.floor(store.hourlyProjectedCustomers[i] * store.averageCookiesSold);
+    console.log('Cookies projected at ' + (i + 6) + ' to ' + (i + 7) + ': ' + cookies);
     store.hourlyProjectedCookiesSold.push(cookies);
   }
 }
@@ -59,7 +112,7 @@ function projectedDailySales(store) {
   var totalCookies = 0;
   for (var i = 0; i < store.hourlyProjectedCookiesSold.length; i++) {
     totalCookies += store.hourlyProjectedCookiesSold[i];
-    console.log(totalCookies);
+    console.log('Ongoing total: ' + totalCookies);
   }
   store.dailySalesTotal = totalCookies;
   return totalCookies;
@@ -68,20 +121,35 @@ function projectedDailySales(store) {
 // Generate and array of the hours the store is open, in a string
 function createOpenHours(store) {
   for (var i = 0; i < store.hourlyProjectedCustomers.length; i++) {
-    var timeAsString = (i + store.storeOpens) + ':00';
-    console.log(timeAsString);
+    var timeAsString = (i + store.storeOpens + 1) + ':00';
+    console.log('Time: ' + timeAsString);
     store.openHours.push(timeAsString);
   }
 }
 
-// Generate sales numbers for each store in an array of store names
+// Display the sales numbers for a given store as a list.
+function displaySalesNumbers(store) {
+  var salesList = document.getElementById(store.storeName);
+  var salesTotal = projectedDailySales(store);
+
+  for (var i = 0; i < store.hourlyProjectedCookiesSold.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = store.openHours[i] + ': ' + store.hourlyProjectedCookiesSold[i] + ' cookies';
+    salesList.appendChild(listItem);
+  }
+  var listItem = document.createElement('li');
+  listItem.textContent = 'Total: ' + salesTotal + ' cookies';
+  salesList.appendChild(listItem);
+}
+
+// Generate sales numbers for each store in an array of stores
 function generateSalesNumbers() {
   for (var i = 0; i < allStores.length; i++) {
     var store = allStores[i];
     generateHourlyTraffic(store);
     projectedHourlySales(store);
-    projectedHourlySales(store);
     createOpenHours(store);
+    displaySalesNumbers(store);
   }
 }
 
