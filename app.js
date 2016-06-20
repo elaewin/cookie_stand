@@ -6,12 +6,16 @@
 // Capitol Hill	20	38	2.3
 // Alki	2	16	4.6
 
+// var allStores = ['firstAndPike', 'seatac', 'seattleCenter', 'capitolHill', 'alki'];
+
 var firstAndPike = {
-  storeName: '1st and Pike',
+  storeName: 'firstAndPike',
+  storeNamePretty: '1st and Pike',
   storeAddress: '102 Pike St, Seattle, WA 98101',
   storePhone: '206-xxx-xxxx',
   storeOpens: 6, // time the store opens, 24 hour clock
   storeCloses: 20, // time the store closes, 24 hour clock
+  openHours: [],
   minHourlyCustomers: 23,
   maxHourlyCustomers: 65,
   averageCookiesSold: 1.2,
@@ -36,7 +40,7 @@ function generateHourlyTraffic(store) {
   }
 }
 
-// Updates a store's array of hourlyProjectedCookiesSold by multiplying each item in hourlyProjectedCustomers by the average number of cookies sold per customer for that store.
+// Updates a store's array of hourlyProjectedCookiesSold by multiplying each item in a store's hourlyProjectedCustomers array by the average number of cookies sold per customer for that store.
 function projectedHourlySales(store) {
   var hourlyCookieAverage = store.averageCookiesSold;
   for (var i = 0; i < store.hourlyProjectedCustomers.length; i++) {
@@ -46,6 +50,7 @@ function projectedHourlySales(store) {
   }
 }
 
+// Calculates the total number of cookies sold in a store based on the amounts in that store's hourlyProjectedCookiesSold array.
 function projectedDailySales(store) {
   var totalCookies = 0;
   for (var i = 0; i < store.hourlyProjectedCookiesSold.length; i++) {
@@ -55,3 +60,24 @@ function projectedDailySales(store) {
   store.dailySalesTotal = totalCookies;
   return totalCookies;
 }
+
+// Generate and array of the hours the store is open, in a string
+function createOpenHours(store) {
+  for (var i = 0; i < store.hourlyProjectedCustomers.length; i++) {
+    var timeAsString = (i + store.storeOpens) + ':00';
+    console.log(timeAsString);
+    store.openHours.push(timeAsString);
+  }
+}
+
+// function generateSalesNumbers() {
+//   for (var i = 0; i < allStores.length; i++) {
+//     var store = allStores[i].storeName;
+//     generateHourlyTraffic(store);
+//     projectedHourlySales(store);
+//     projectedHourlySales(store);
+//     createOpenHours(store);
+//   }
+// }
+//
+// generateSalesNumbers();
