@@ -46,8 +46,12 @@ function projectedHourlySales(store) {
   }
 }
 
-function projectedDailySales(array name) {
-  for each item in an array of hour sales
-  add that number to a total number
-  return the total number at the end.
+function projectedDailySales(store) {
+  var totalCookies = 0;
+  for (var i = 0; i < store.hourlyProjectedCookiesSold.length; i++) {
+    totalCookies += store.hourlyProjectedCookiesSold[i];
+    console.log(totalCookies);
+  }
+  store.dailySalesTotal = totalCookies;
+  return totalCookies;
 }
