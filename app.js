@@ -26,7 +26,7 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Returns an array with a random number of customers per hour for each hour that the store is open.
+// Updates a store's array of hourlyProjectedCustomers with a random number of customers per hour for each hour that the store is open.
 function generateHourlyTraffic(store) {
   var openHours = store.storeCloses - store.storeOpens;
   for (var i = 0; i < openHours; i++) {
@@ -36,12 +36,14 @@ function generateHourlyTraffic(store) {
   }
 }
 
-
-function projectedHourlySales(array name, average cookies sold) {
-  for each item in the array of hourly customers
-  multiply that number by the average cookies sold per hour
-  store that number in an array
-  return the array
+// Updates a store's array of hourlyProjectedCookiesSold by multiplying each item in hourlyProjectedCustomers by the average number of cookies sold per customer for that store.
+function projectedHourlySales(store) {
+  var hourlyCookieAverage = store.averageCookiesSold;
+  for (var i = 0; i < store.hourlyProjectedCustomers.length; i++) {
+    var cookies = store.hourlyProjectedCustomers[i] * store.averageCookiesSold;
+    console.log(cookies);
+    store.hourlyProjectedCookiesSold.push(cookies);
+  }
 }
 
 function projectedDailySales(array name) {
