@@ -17,6 +17,8 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
   this.cookiesPerHourArray = [];
   this.dailySalesTotal = 0;
 
+  allStores.push(this);
+
   // Generate and array of the hours the store is open, in a string
   this.createOpenHours = function() {
     var storeIsOpen = this.storeCloses - this.storeOpens;
@@ -25,7 +27,7 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
       // console.log('Time:', timeAsString);
       this.openHoursArray.push(timeAsString);
     }
-  }
+  };
 };
 
 var firstAndPike = new Store('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 6, 20, 23, 65, 6.3);
@@ -38,60 +40,70 @@ var capitolHill = new Store('capitolhill', 'Capitol Hill', '434 Broadway Avenue 
 
 var alki = new Store('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 6, 20, 2, 16, 4.6);
 
-// Generate sales numbers for each store in an array of stores
-function generateSalesNumbers() {
+// show objects in the console for testing
+function testInConsole() {
   for (var i = 0; i < allStores.length; i++) {
-    var store = allStores[i];
-    render(store);
+    allStores[i].createOpenHours();
+    console.dir(allStores[i]);
   }
 }
 
-generateSalesNumbers();
+testInConsole();
 
-// Returns a random integer between min (included) and max (included)
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// Updates a store's array of custsPerHourArray with a random number of customers per hour for each hour that the store is open.
-function generateHourlyTraffic(store) {
-  hoursOfOperation = createOpenHours(store);
-
-  for (var i = 0; i < store.openHoursArray.length; i++) {
-    var customers = getRandomIntInclusive(store.minCustsPerHour, store.maxCustsPerHour);
-    // console.log('Customers per hour:', customers);
-    store.custsPerHourArray.push(customers);
-  }
-}
-
-// Updates a store's array of cookiesPerHourArray by multiplying each item in a store's custsPerHourArray array by the average number of cookies sold per customer for that store.
-function projectedSales(store) {
-  generateHourlyTraffic(store);
-  var hourlyCookieAverage = store.avgCookiesPerCust;
-  var totalCookies = 0;
-
-  for (var i = 0; i < store.openHoursArray.length; i++) {
-    var cookies = Math.floor(store.custsPerHourArray[i] * store.avgCookiesPerCust);
-    // console.log('Cookies this hour:', cookies);
-    totalCookies += cookies;
-    store.cookiesPerHourArray.push(cookies);
-  }
-  store.dailySalesTotal = totalCookies;
-  return totalCookies;
-}
-
-// Display the sales numbers for a given store as a list.
-// CHANGE THE NAME OF THIS FUNCTION TO 'render'
-function render(store) {
-  var salesTotal = projectedSales(store);
-  var salesList = document.getElementById(store.identifier);
-
-  for (var i = 0; i < store.cookiesPerHourArray.length; i++) {
-    var listItem = document.createElement('li');
-    listItem.textContent = store.openHoursArray[i] + ': ' + store.cookiesPerHourArray[i] + ' cookies';
-    salesList.appendChild(listItem);
-  }
-  var listItem = document.createElement('li');
-  listItem.textContent = 'Total: ' + salesTotal + ' cookies';
-  salesList.appendChild(listItem);
-}
+// // Generate sales numbers for each store in an array of stores
+// function generateSalesNumbers() {
+//   for (var i = 0; i < allStores.length; i++) {
+//     var store = allStores[i];
+//     render(store);
+//   }
+// }
+//
+// generateSalesNumbers();
+//
+// // Returns a random integer between min (included) and max (included)
+// function getRandomIntInclusive(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+//
+// // Updates a store's array of custsPerHourArray with a random number of customers per hour for each hour that the store is open.
+// function generateHourlyTraffic(store) {
+//   hoursOfOperation = createOpenHours(store);
+//
+//   for (var i = 0; i < store.openHoursArray.length; i++) {
+//     var customers = getRandomIntInclusive(store.minCustsPerHour, store.maxCustsPerHour);
+//     // console.log('Customers per hour:', customers);
+//     store.custsPerHourArray.push(customers);
+//   }
+// }
+//
+// // Updates a store's array of cookiesPerHourArray by multiplying each item in a store's custsPerHourArray array by the average number of cookies sold per customer for that store.
+// function projectedSales(store) {
+//   generateHourlyTraffic(store);
+//   var hourlyCookieAverage = store.avgCookiesPerCust;
+//   var totalCookies = 0;
+//
+//   for (var i = 0; i < store.openHoursArray.length; i++) {
+//     var cookies = Math.floor(store.custsPerHourArray[i] * store.avgCookiesPerCust);
+//     // console.log('Cookies this hour:', cookies);
+//     totalCookies += cookies;
+//     store.cookiesPerHourArray.push(cookies);
+//   }
+//   store.dailySalesTotal = totalCookies;
+//   return totalCookies;
+// }
+//
+// // Display the sales numbers for a given store as a list.
+// // CHANGE THE NAME OF THIS FUNCTION TO 'render'
+// function render(store) {
+//   var salesTotal = projectedSales(store);
+//   var salesList = document.getElementById(store.identifier);
+//
+//   for (var i = 0; i < store.cookiesPerHourArray.length; i++) {
+//     var listItem = document.createElement('li');
+//     listItem.textContent = store.openHoursArray[i] + ': ' + store.cookiesPerHourArray[i] + ' cookies';
+//     salesList.appendChild(listItem);
+//   }
+//   var listItem = document.createElement('li');
+//   listItem.textContent = 'Total: ' + salesTotal + ' cookies';
+//   salesList.appendChild(listItem);
+// }
