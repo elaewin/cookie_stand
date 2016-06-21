@@ -9,8 +9,8 @@ function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Store constructor function
-function Store(identifier, storeName, storeAddress, storePhone, storeOpens, storeCloses, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust) {
+// CookieHut constructor function
+function CookieHut(identifier, storeName, storeAddress, storePhone, storeOpens, storeCloses, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust) {
   this.identifier = identifier; // identifier should be all lowercase
   this.storeName = storeName;
   this.storeAddress = storeAddress;
@@ -48,43 +48,51 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
   };
 
   // Display the sales numbers for a given store as a list.
-  this.render = function() {
-    var salesTotal = this.projectedSales();
-    var salesList = document.getElementById(this.identifier);
-    for (var i = 0; i < this.cookiesPerHourArray.length; i++) {
-      var listItem = document.createElement('li');
-      listItem.textContent = openHoursArray[i] + ': ' + this.cookiesPerHourArray[i] + ' cookies';
-      salesList.appendChild(listItem);
-    }
-    var listItem = document.createElement('li');
-    listItem.textContent = 'Total: ' + salesTotal + ' cookies';
-    salesList.appendChild(listItem);
-  };
+  // this.render = function() {
+  //   var salesTotal = this.projectedSales();
+  //   var salesList = document.getElementById(this.identifier);
+  //   for (var i = 0; i < this.cookiesPerHourArray.length; i++) {
+  //     var listItem = document.createElement('li');
+  //     listItem.textContent = openHoursArray[i] + ': ' + this.cookiesPerHourArray[i] + ' cookies';
+  //     salesList.appendChild(listItem);
+  //   }
+  //   var listItem = document.createElement('li');
+  //   listItem.textContent = 'Total: ' + salesTotal + ' cookies';
+  //   salesList.appendChild(listItem);
+  // };
 };
 
-var firstAndPike = new Store('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 23, 65, 6.3);
+// Create instance of CookieHut for all existing stores.
+var firstAndPike = new CookieHut('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 23, 65, 6.3);
 
-var seatac = new Store('seatac', 'Seatac Airport', 'Concourse D, 17801 International Blvd, Seattle, WA 98158', '425-xxx-xxxx', 3, 24, 1.2);
+var seatac = new CookieHut('seatac', 'Seatac Airport', 'Concourse D, 17801 International Blvd, Seattle, WA 98158', '425-xxx-xxxx', 3, 24, 1.2);
 
-var seattleCenter = new Store('seattlecenter', 'Seattle Center', '305 Harrison St, Seattle, WA 98109', '206-xxx-xxxx', 11, 38, 3.7);
+var seattleCenter = new CookieHut('seattlecenter', 'Seattle Center', '305 Harrison St, Seattle, WA 98109', '206-xxx-xxxx', 11, 38, 3.7);
 
-var capitolHill = new Store('capitolhill', 'Capitol Hill', '434 Broadway Avenue E, Seattle, WA 98102', '206-xxx-xxxx', 20, 38, 2.3);
+var capitolHill = new CookieHut('capitolhill', 'Capitol Hill', '434 Broadway Avenue E, Seattle, WA 98102', '206-xxx-xxxx', 20, 38, 2.3);
 
-var alki = new Store('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 2, 16, 4.6);
+var alki = new CookieHut('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 2, 16, 4.6);
+
+// Populate the sales table with projected sales information
+var salesTable = document.getElementById('sales');
 
 // Generate header row
 function makeHeaderRow() {
+  var trEl = document.createElement('tr');
   for(i = 0; i < openHoursArray.length; i++) {
-    
+    var thEl = document.createElement('th');
+    thEl.textContent = openHoursArray[i];
+    trEl.appendChild(thEl);
   }
+  salesTable.appendChild(trEl);
 }
 
 // Generate sales numbers for each store in an array of stores
-// function generateSalesNumbers() {
-//   for (var i = 0; i < allStores.length; i++) {
-//     console.dir(allStores[i]);
-//     allStores[i].render();
-//   }
-// }
-//
-// generateSalesNumbers();
+function generateSalesNumbers() {
+  for(var i = 0; i < allStores.length; i++) {
+    console.dir(allStores[i]);
+    allStores[i].projectedSales();
+  }
+}
+
+generateSalesNumbers();
