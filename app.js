@@ -43,7 +43,23 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
       // console.log('Customers per hour:', customers);
       this.custsPerHourArray.push(customers);
     }
-  }
+  };
+
+  // Updates a store's array of cookiesPerHourArray by multiplying each item in a store's custsPerHourArray array by the average number of cookies sold per customer for that store.
+  this.projectedSales = function() {
+    this.generateHourlyTraffic();
+    var hourlyCookieAverage = this.avgCookiesPerCust;
+    var totalCookies = 0;
+
+    for (var i = 0; i < this.openHoursArray.length; i++) {
+      var cookies = Math.floor(this.custsPerHourArray[i] * this.avgCookiesPerCust);
+      // console.log('Cookies this hour:', cookies);
+      totalCookies += cookies;
+      this.cookiesPerHourArray.push(cookies);
+    }
+    this.dailySalesTotal = totalCookies;
+    return totalCookies;
+  };
 };
 
 var firstAndPike = new Store('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 6, 20, 23, 65, 6.3);
@@ -59,7 +75,7 @@ var alki = new Store('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206
 // show objects in the console for testing
 function testInConsole() {
   for (var i = 0; i < allStores.length; i++) {
-    allStores[i].generateHourlyTraffic();
+    allStores[i].projectedSales();
     console.dir(allStores[i]);
   }
 }
@@ -80,21 +96,7 @@ testInConsole();
 //
 
 //
-// // Updates a store's array of cookiesPerHourArray by multiplying each item in a store's custsPerHourArray array by the average number of cookies sold per customer for that store.
-// function projectedSales(store) {
-//   generateHourlyTraffic(store);
-//   var hourlyCookieAverage = store.avgCookiesPerCust;
-//   var totalCookies = 0;
-//
-//   for (var i = 0; i < store.openHoursArray.length; i++) {
-//     var cookies = Math.floor(store.custsPerHourArray[i] * store.avgCookiesPerCust);
-//     // console.log('Cookies this hour:', cookies);
-//     totalCookies += cookies;
-//     store.cookiesPerHourArray.push(cookies);
-//   }
-//   store.dailySalesTotal = totalCookies;
-//   return totalCookies;
-// }
+
 //
 // // Display the sales numbers for a given store as a list.
 // // CHANGE THE NAME OF THIS FUNCTION TO 'render'
