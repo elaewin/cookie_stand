@@ -8,12 +8,12 @@ function getRandomIntInclusive(min, max) {
 
 // Store constructor function
 function Store(identifier, storeName, storeAddress, storePhone, storeOpens, storeCloses, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust) {
-  this.identifier = identifier;
+  this.identifier = identifier; // identifier should be all lowercase
   this.storeName = storeName;
   this.storeAddress = storeAddress;
   this.storePhone = storePhone;
-  this.storeOpens = storeOpens;
-  this.storeCloses = storeCloses;
+  this.storeOpens = storeOpens; // time the store opens, 24 hour clock
+  this.storeCloses = storeCloses; // time the store closes, 24 hour clock
   this.minCustsPerHour = minCustsPerHour;
   this.maxCustsPerHour = maxCustsPerHour;
   this.avgCookiesPerCust = avgCookiesPerCust;
@@ -37,7 +37,6 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
   // Updates a store's array of custsPerHourArray with a random number of customers per hour for each hour that the store is open.
   this.generateHourlyTraffic = function() {
     hoursOfOperation = this.createOpenHours();
-
     for (var i = 0; i < this.openHoursArray.length; i++) {
       var customers = getRandomIntInclusive(this.minCustsPerHour, this.maxCustsPerHour);
       // console.log('Customers per hour:', customers);
@@ -50,7 +49,6 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
     this.generateHourlyTraffic();
     var hourlyCookieAverage = this.avgCookiesPerCust;
     var totalCookies = 0;
-
     for (var i = 0; i < this.openHoursArray.length; i++) {
       var cookies = Math.floor(this.custsPerHourArray[i] * this.avgCookiesPerCust);
       // console.log('Cookies this hour:', cookies);
@@ -59,6 +57,20 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
     }
     this.dailySalesTotal = totalCookies;
     return totalCookies;
+  };
+
+  // Display the sales numbers for a given store as a list.
+  this.render = function() {
+    var salesTotal = this.projectedSales();
+    var salesList = document.getElementById(this.identifier);
+    for (var i = 0; i < this.cookiesPerHourArray.length; i++) {
+      var listItem = document.createElement('li');
+      listItem.textContent = this.openHoursArray[i] + ': ' + this.cookiesPerHourArray[i] + ' cookies';
+      salesList.appendChild(listItem);
+    }
+    var listItem = document.createElement('li');
+    listItem.textContent = 'Total: ' + salesTotal + ' cookies';
+    salesList.appendChild(listItem);
   };
 };
 
@@ -72,44 +84,12 @@ var capitolHill = new Store('capitolhill', 'Capitol Hill', '434 Broadway Avenue 
 
 var alki = new Store('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 6, 20, 2, 16, 4.6);
 
-// show objects in the console for testing
-function testInConsole() {
+// Generate sales numbers for each store in an array of stores
+function generateSalesNumbers() {
   for (var i = 0; i < allStores.length; i++) {
-    allStores[i].projectedSales();
     console.dir(allStores[i]);
+    allStores[i].render();
   }
 }
 
-testInConsole();
-
-// // Generate sales numbers for each store in an array of stores
-// function generateSalesNumbers() {
-//   for (var i = 0; i < allStores.length; i++) {
-//     var store = allStores[i];
-//     render(store);
-//   }
-// }
-//
-// generateSalesNumbers();
-//
-
-//
-
-//
-
-//
-// // Display the sales numbers for a given store as a list.
-// // CHANGE THE NAME OF THIS FUNCTION TO 'render'
-// function render(store) {
-//   var salesTotal = projectedSales(store);
-//   var salesList = document.getElementById(store.identifier);
-//
-//   for (var i = 0; i < store.cookiesPerHourArray.length; i++) {
-//     var listItem = document.createElement('li');
-//     listItem.textContent = store.openHoursArray[i] + ': ' + store.cookiesPerHourArray[i] + ' cookies';
-//     salesList.appendChild(listItem);
-//   }
-//   var listItem = document.createElement('li');
-//   listItem.textContent = 'Total: ' + salesTotal + ' cookies';
-//   salesList.appendChild(listItem);
-// }
+generateSalesNumbers();
