@@ -111,6 +111,7 @@ function projectedHourlySales(store) {
 }
 
 // Calculates the total number of cookies sold in a store based on the amounts in that store's cookiesPerHourArray array, returns the total amount sold.
+// COMBINE THIS WITH THE FUNCTION ABOVE; RETURN TOTAL COOKIES FROM THERE.
 function projectedDailySales(store) {
   var totalCookies = 0;
   for (var i = 0; i < store.cookiesPerHourArray.length; i++) {
