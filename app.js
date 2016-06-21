@@ -1,6 +1,11 @@
 // Array of stores
 var allStores = [];
 
+// Returns a random integer between min (included) and max (included)
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Store constructor function
 function Store(identifier, storeName, storeAddress, storePhone, storeOpens, storeCloses, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust) {
   this.identifier = identifier;
@@ -28,6 +33,17 @@ function Store(identifier, storeName, storeAddress, storePhone, storeOpens, stor
       this.openHoursArray.push(timeAsString);
     }
   };
+
+  // Updates a store's array of custsPerHourArray with a random number of customers per hour for each hour that the store is open.
+  this.generateHourlyTraffic = function() {
+    hoursOfOperation = this.createOpenHours();
+
+    for (var i = 0; i < this.openHoursArray.length; i++) {
+      var customers = getRandomIntInclusive(this.minCustsPerHour, this.maxCustsPerHour);
+      // console.log('Customers per hour:', customers);
+      this.custsPerHourArray.push(customers);
+    }
+  }
 };
 
 var firstAndPike = new Store('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 6, 20, 23, 65, 6.3);
@@ -43,7 +59,7 @@ var alki = new Store('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206
 // show objects in the console for testing
 function testInConsole() {
   for (var i = 0; i < allStores.length; i++) {
-    allStores[i].createOpenHours();
+    allStores[i].generateHourlyTraffic();
     console.dir(allStores[i]);
   }
 }
@@ -60,21 +76,9 @@ testInConsole();
 //
 // generateSalesNumbers();
 //
-// // Returns a random integer between min (included) and max (included)
-// function getRandomIntInclusive(min, max) {
-//   return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
+
 //
-// // Updates a store's array of custsPerHourArray with a random number of customers per hour for each hour that the store is open.
-// function generateHourlyTraffic(store) {
-//   hoursOfOperation = createOpenHours(store);
-//
-//   for (var i = 0; i < store.openHoursArray.length; i++) {
-//     var customers = getRandomIntInclusive(store.minCustsPerHour, store.maxCustsPerHour);
-//     // console.log('Customers per hour:', customers);
-//     store.custsPerHourArray.push(customers);
-//   }
-// }
+
 //
 // // Updates a store's array of cookiesPerHourArray by multiplying each item in a store's custsPerHourArray array by the average number of cookies sold per customer for that store.
 // function projectedSales(store) {
