@@ -1,12 +1,16 @@
 * {
   margin: 0px;
   padding: 0px;
-  /*outline: 1px dashed orange;*/
+  outline: 1px dashed orange;
 }
 
 body {
   font-family: 'Lora', serif;
   color: #000;
+}
+
+#content_wrapper {
+  padding-top: 80px;
 }
 
 h2, h3, h4, h5 {
@@ -33,12 +37,7 @@ h1 {
 }
 
 .fish {
-  float: right;
   height: 80px;
-}
-
-#content_wrapper {
-  padding-top: 80px;
 }
 
 p {
@@ -63,6 +62,11 @@ p {
 .highlight_container p {
   font-style: italic;
 }
+
+table {
+  border: 1px solid black;
+}
+
 .data {
   font-family: 'Open Sans', sans-serif;
   padding-left: 25px;

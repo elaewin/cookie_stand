@@ -47,19 +47,11 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, storeOpens, 
     return totalCookies;
   };
 
-  // Display the sales numbers for a given store as a list.
-  // this.render = function() {
-  //   var salesTotal = this.projectedSales();
-  //   var salesList = document.getElementById(this.identifier);
-  //   for (var i = 0; i < this.cookiesPerHourArray.length; i++) {
-  //     var listItem = document.createElement('li');
-  //     listItem.textContent = openHoursArray[i] + ': ' + this.cookiesPerHourArray[i] + ' cookies';
-  //     salesList.appendChild(listItem);
-  //   }
-  //   var listItem = document.createElement('li');
-  //   listItem.textContent = 'Total: ' + salesTotal + ' cookies';
-  //   salesList.appendChild(listItem);
-  // };
+  Display the sales numbers for a given store as a list.
+  this.render = function() {
+    var salesTotal = this.projectedSales();
+    
+  };
 };
 
 // Create instance of CookieHut for all existing stores.
@@ -79,6 +71,12 @@ var salesTable = document.getElementById('sales');
 // Generate header row
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
+  var thEl = document.createElement('th'); // blank space in header row
+  thEl.textContent = '';
+  trEl.appendChild(thEl);
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Daily Location Total';
+  trEl.appendChild(thEl);
   for(i = 0; i < openHoursArray.length; i++) {
     var thEl = document.createElement('th');
     thEl.textContent = openHoursArray[i];
@@ -95,4 +93,5 @@ function generateSalesNumbers() {
   }
 }
 
+makeHeaderRow();
 generateSalesNumbers();
