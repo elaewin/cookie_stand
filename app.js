@@ -3,12 +3,12 @@ var allStoresArray = [];
 
 // Array of hours the stores are open
 var openHoursArray = ['6:00 - 7:00am', '7:00 - 8:00am', '8:00 - 9:00am', '9:00 - 10:00am', '10:00 - 11:00am', '11:00 - 12:00pm', '12:00 - 1:00pm', '1:00 - 2:00pm', '2:00 - 3:00pm', '3:00 - 4:00pm', '4:00 - 5:00pm', '5:00 - 6:00pm', '6:00 - 7:00pm', '7:00 - 8:00pm'];
+ //Access the DOM at the table on the sales page
+var salesTable = document.getElementById('sales');
 
-// MOVE THIS DOWN WITH THE OTHER
-// Returns a random integer between min (included) and max (included)
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+//Access the form in the DOM
+var salesForm = document.getElementById('new_store_form');
+
 
 // CookieHut constructor function
 function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust) {
@@ -74,6 +74,10 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
   };
 };
 
+// Returns a random integer between min (included) and max (included)
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 // Create instance of CookieHut for all existing stores.
 var firstAndPike = new CookieHut('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 23, 65, 6.3);
 
@@ -85,11 +89,8 @@ var capitolHill = new CookieHut('capitolhill', 'Capitol Hill', '434 Broadway Ave
 
 var alki = new CookieHut('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 2, 16, 4.6);
 
+
 // Populate the sales table with projected sales information
-
-// MOVE THIS UP INTO GLOBAL VARIABLES AT THE TOP OF THE CODE
-var salesTable = document.getElementById('sales');
-
 // Generate header row
 // ADD CLASSES TO THE CELLS IN THE HEADER ROW
 function makeHeaderRow() {
@@ -97,11 +98,11 @@ function makeHeaderRow() {
   var thEl = document.createElement('th'); // blank space in header row
   thEl.textContent = '';
   trEl.appendChild(thEl);
-  var thEl = document.createElement('th');
+  thEl = document.createElement('th');
   thEl.textContent = 'Daily Location Total';
   trEl.appendChild(thEl);
   for(i = 0; i < openHoursArray.length; i++) {
-    var thEl = document.createElement('th');
+    thEl = document.createElement('th');
     thEl.textContent = openHoursArray[i];
     trEl.appendChild(thEl);
   }
@@ -112,18 +113,19 @@ function makeHeaderRow() {
 // ADD CLASSES TO THE CELLS IN THE FOOTER ROW
 function makeFooterRow() {
   var trEl = document.createElement('tr');
+  trEl.id = 'footer';
   var tdEl = document.createElement('td'); // blank space in footer row
   tdEl.textContent = 'Totals';
   trEl.appendChild(tdEl);
-  var tdEl = document.createElement('td');
+  tdEl = document.createElement('td');
   grandTotal = 0;
   for(var i = 0; i < allStoresArray.length; i++) {
     grandTotal += allStoresArray[i].dailySalesTotal;
   }
   tdEl.textContent = grandTotal;
   trEl.appendChild(tdEl);
-  for(var i = 0; i < openHoursArray.length; i++) {
-    var tdEl = document.createElement('td');
+  for( i = 0; i < openHoursArray.length; i++) {
+    tdEl = document.createElement('td');
     var totalByHour = 0;
     for(var j = 0; j < allStoresArray.length; j++) {
       totalByHour += allStoresArray[j].cookiesPerHourArray[i];
@@ -141,7 +143,53 @@ function generateSalesNumbers() {
     allStoresArray[i].render(i);
   }
 }
-
+// function testInConsole() {
+//   for (var i = 0; i < allStoresArray.length; i++){
+//     allStoresArray[i].generateHourlyTraffic();
+//     console.dir(allStoresArray[i]);
+//   }
+// }
 makeHeaderRow();
 generateSalesNumbers();
 makeFooterRow();
+//add new store
+
+function handleNewStoreSubmit(event){
+  event.preventDefault();
+  var counter = 0;
+
+  var identifier = event.target.identifier.value;
+  var storeName = event.target.storeName.value;
+  var storeAddress = event.target.storeAddress.value;
+  var storePhone = event.target.storePhone.value;
+  var minCustsPerHour = event.target.minCustsPerHour.value;
+  var maxCustsPerHour = event.target.maxCustsPerHour.value;
+  var avgCookiesPerCust = event.target.avgCookiesPerCust.value;
+
+  if (!identifier || !storeName || !storeAddress || !storePhone || !minCustsPerHour || !maxCustsPerHour || !avgCookiesPerCust) {
+    return alert('Fields cannot be empty!');
+  }
+
+  var newStore = new CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust);
+
+  document.getElementById('footer').innerHTML = '';
+  // salesTable.innerHTML = '';
+
+  // console.log('salesTable', salesTable);
+
+  newStore.render(counter);
+  makeFooterRow();
+  counter++;
+
+  event.target.identifier.value = null;
+  event.target.storeName.value = null;
+  event.target.storeAddress.value = null;
+  event.target.storePhone.value = null;
+  event.target.minCustsPerHour.value = null;
+  event.target.maxCustsPerHour.value = null;
+  event.target.avgCookiesPerCust.value = null;
+  // console.log(event.target);
+
+}
+
+new_store_form.addEventListener('submit',handleNewStoreSubmit);
