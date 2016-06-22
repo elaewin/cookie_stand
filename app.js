@@ -49,9 +49,12 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
   };
 
   // Display the sales numbers for a given store as a list.
-  this.render = function() {
+  this.render = function(rowColorCheck) {
     var salesTotal = this.projectedSales();
     var trEl = document.createElement('tr');
+    if((rowColorCheck % 2) === 0) {
+      trEl.className = 'grey';
+    }
     var tdEl = document.createElement('td');
     tdEl.textContent = storeName;
     trEl.appendChild(tdEl);
@@ -60,9 +63,6 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
     trEl.appendChild(tdEl);
     for(var i = 0; i < this.cookiesPerHourArray.length; i++) {
       var tdEl = document.createElement('td');
-      // if((i % 2) === 0) {
-      //   trEl.className = 'grey';
-      // }
       tdEl.textContent = this.cookiesPerHourArray[i];
       trEl.appendChild(tdEl);
     }
@@ -103,22 +103,37 @@ function makeHeaderRow() {
 
 // Generate footer row
 function makeFooterRow() {
-  
-  for(var i = 0; i < openHoursArray.length; i++) {
-    var totalByHour = 0;
-    for(var j = 0; j < this.allStoresArray.length; j++) {
-      totalByHour += this.cookiesPerHourArray[i];
-    }
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td'); // blank space in footer row
+  tdEl.textContent = 'Totals';
+  trEl.appendChild(tdEl);
+  var tdEl = document.createElement('td');
+  grandTotal = 0;
+  for(var i = 0; i < allStoresArray.length; i++) {
+    grandTotal += allStoresArray[i].dailySalesTotal;
   }
+  tdEl.textContent = grandTotal;
+  trEl.appendChild(tdEl);
+  for(var i = 0; i < openHoursArray.length; i++) {
+    var tdEl = document.createElement('td');
+    var totalByHour = 0;
+    for(var j = 0; j < allStoresArray.length; j++) {
+      totalByHour += allStoresArray[j].cookiesPerHourArray[i];
+    }
+    tdEl.textContent = totalByHour;
+    trEl.appendChild(tdEl);
+  }
+  salesTable.appendChild(trEl);
 };
 
 // Generate sales numbers for each store in an array of stores
 function generateSalesNumbers() {
   for(var i = 0; i < allStoresArray.length; i++) {
-    console.dir(allStoresArray[i]);
-    allStoresArray[i].render();
+    // console.dir(allStoresArray[i]);
+    allStoresArray[i].render(i);
   }
 }
 
 makeHeaderRow();
 generateSalesNumbers();
+makeFooterRow();

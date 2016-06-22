@@ -65,14 +65,22 @@ p {
 
 table {
   border: 1px solid black;
+  border-collapse: collapse;
+  margin: 10px;
 }
 
 .grey {
   background-color: #ccc;
 }
+
 .data {
   font-family: 'Open Sans', sans-serif;
-  padding-left: 25px;
+}
+
+td, th {
+  border: 1px dotted grey;
+  padding: 0px 5px;
+  text-align: right;
 }
 
 footer {
