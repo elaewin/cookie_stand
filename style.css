@@ -67,6 +67,9 @@ table {
   border: 1px solid black;
 }
 
+.grey {
+  background-color: #ccc;
+}
 .data {
   font-family: 'Open Sans', sans-serif;
   padding-left: 25px;
