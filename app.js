@@ -4,6 +4,7 @@ var allStoresArray = [];
 // Array of hours the stores are open
 var openHoursArray = ['6:00 - 7:00am', '7:00 - 8:00am', '8:00 - 9:00am', '9:00 - 10:00am', '10:00 - 11:00am', '11:00 - 12:00pm', '12:00 - 1:00pm', '1:00 - 2:00pm', '2:00 - 3:00pm', '3:00 - 4:00pm', '4:00 - 5:00pm', '5:00 - 6:00pm', '6:00 - 7:00pm', '7:00 - 8:00pm'];
 
+// MOVE THIS DOWN WITH THE OTHER
 // Returns a random integer between min (included) and max (included)
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -49,6 +50,8 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
   };
 
   // Display the sales numbers for a given store as a list.
+  // ADD CLASS FOR CELLS WITH THE LOC NAMES
+  // ADD IDS TO THE ROWS AS THEY'RE CREATED
   this.render = function(rowColorCheck) {
     var salesTotal = this.projectedSales();
     var trEl = document.createElement('tr');
@@ -58,6 +61,7 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
     var tdEl = document.createElement('td');
     tdEl.textContent = storeName;
     trEl.appendChild(tdEl);
+    // GET RID OF VAR ON VARIABLES THAT ARE ALREADY DECLARED IN THE FUNCTION
     var tdEl = document.createElement('td');
     tdEl.textContent = salesTotal;
     trEl.appendChild(tdEl);
@@ -82,9 +86,12 @@ var capitolHill = new CookieHut('capitolhill', 'Capitol Hill', '434 Broadway Ave
 var alki = new CookieHut('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 2, 16, 4.6);
 
 // Populate the sales table with projected sales information
+
+// MOVE THIS UP INTO GLOBAL VARIABLES AT THE TOP OF THE CODE
 var salesTable = document.getElementById('sales');
 
 // Generate header row
+// ADD CLASSES TO THE CELLS IN THE HEADER ROW
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th'); // blank space in header row
@@ -102,6 +109,7 @@ function makeHeaderRow() {
 }
 
 // Generate footer row
+// ADD CLASSES TO THE CELLS IN THE FOOTER ROW
 function makeFooterRow() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td'); // blank space in footer row
