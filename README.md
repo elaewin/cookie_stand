@@ -1,7 +1,7 @@
 # cookie_stand
 Codefellows 201 week 2 lab project repo
 
-Using Open Sans, Contrail One, and Lora from Google Fonts.
+Using Open Sans 400, Open Sans 700 (bold), Contrail One, and Lora from Google Fonts.
 
 Palettes:
 
@@ -14,7 +14,7 @@ Palettes:
 
 * A custom Google font for highlights: Contrail One
 * A specified standard san-serif web font for data: Open Sans
-* A specified standard serif web font for text: Lora 
+* A specified standard serif web font for text: Lora
 * Specified different font colors for all three font usages
 * A background color for the default page background (make sure font colors have good contrast and are readable on this background)
 * A different background color for elements such boxes and tables (so make sure the font colors contrast against this well, too!)
