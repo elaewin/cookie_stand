@@ -1,0 +1,206 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* BASE STYLES */
+
+body {
+  font-family: Lora, serif;
+  font-size: 16px;
+  line-height: 1.25em;
+}
+
+main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.clearfix {
+  clear: both;
+}
+
+/* TYPOGRAPHICAL STYLES */
+
+p {
+  font-family: Lora, serif;
+  font-size: 16px;
+  line-height: 1.25em;
+}
+
+.em {
+  font-family: 'Lora', serif;
+  font-style: italic;
+}
+
+.strong {
+  font-family: 'Lora', serif;
+  font-weight: bold;
+}
+
+/* Headings */
+h1 {
+  font-family: 'Contrail One', cursive;
+  font-size: 2.5em;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+h2, h3, h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  line-height: normal;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 100%;
+}
+
+.highlight {
+  display: block;
+  color: #652914;
+  font-family: 'Contrail One', sans-serif;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  text-shadow: -1px -1px #fe8c65;
+  text-transform: uppercase;
+}
+
+blockquote {
+  margin: 15px 45px;
+  padding: 5px;
+  border: 2px solid #B25535;
+  font-style: italic;
+}
+
+/* LIST STYLES */
+
+.structural li {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 30px;
+  width: 470px;
+  list-style-type: none;
+}
+
+.structural li:last-child {
+  margin-right: 0px;
+}
+
+dl {
+  float: left;
+  clear: both;
+  width: 100%;
+  outline: 1px dashed red;
+}
+
+dt {
+  float: left;
+  clear: both;
+  text-align: right;
+  font-family: "Open Sans", sans-serif;
+  font-variant: small-caps;
+  margin: 0 5px 10px;
+  width: 22%;
+  outline: 1px dashed blue;
+}
+
+dd {
+  float: right;
+  clear: none;
+  width: 70%;
+  padding-right: 20px;
+  outline: 1px dashed blue;
+}
+
+.structural li ul li {
+  display: list-item;
+  line-height: normal;
+  list-style-position: inside;
+  list-style-type: square;
+  margin-bottom: 0px;
+  outline: 1px dashed red;
+}
+
+ul li ul li {
+  display: list-item;
+  line-height: normal;
+  list-style-position: inside;
+  list-style-type: square;
+  margin-left: 20px;
+  outline: 1px dashed red;
+}
+
+
+.structural li ol li {
+  display: list-item;
+  line-height: normal;
+  list-style-position: inside;
+  list-style-type: decimal;
+  margin: 0 20px;
+  outline: 1px dashed red;
+}
+
+ol li ol li {
+  display: list-item;
+  line-height: normal;
+  list-style-position: inside;
+  list-style-type: decimal;
+  margin: 0 20px;
+  outline: 1px dashed red;
+}
