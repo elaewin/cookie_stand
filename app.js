@@ -1,3 +1,5 @@
+'use strict';
+
 // Array of stores
 var allStoresArray = [];
 
