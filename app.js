@@ -9,7 +9,6 @@ var salesTable = document.getElementById('sales');
 //Access the form in the DOM
 var salesForm = document.getElementById('new_store_form');
 
-
 // CookieHut constructor function
 function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust) {
   this.identifier = identifier; // identifier should be all lowercase
@@ -30,7 +29,7 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
     for (var i = 0; i < openHoursArray.length; i++) {
       var customers = getRandomIntInclusive(this.minCustsPerHour, this.maxCustsPerHour);
       // console.log('Customers per hour:', customers);
-      this.custsPerHourArray.push(customers);
+      this.custsPerHourArray[i] = customers;
     }
   };
 
@@ -43,7 +42,7 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
       var cookies = Math.floor(this.custsPerHourArray[i] * this.avgCookiesPerCust);
       // console.log('Cookies this hour:', cookies);
       totalCookies += cookies;
-      this.cookiesPerHourArray.push(cookies);
+      this.cookiesPerHourArray[i] = cookies;
     }
     this.dailySalesTotal = totalCookies;
     return totalCookies;
@@ -156,7 +155,7 @@ makeFooterRow();
 
 function handleNewStoreSubmit(event){
   event.preventDefault();
-  var counter = 0;
+  var counter = 1;
 
   var identifier = event.target.identifier.value;
   var storeName = event.target.storeName.value;
@@ -172,14 +171,20 @@ function handleNewStoreSubmit(event){
 
   var newStore = new CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust);
 
-  document.getElementById('footer').innerHTML = '';
-  // salesTable.innerHTML = '';
+  salesTable.innerHTML = '';
 
   // console.log('salesTable', salesTable);
-
-  newStore.render(counter);
+  // var foot = document.getElementById('footer');
+  // foot.textContent = '';
+  // console.log(foot);
+  //
+  // newStore.render(counter);
+  // makeFooterRow();
+  //
+  // counter++;
+  makeHeaderRow();
+  generateSalesNumbers();
   makeFooterRow();
-  counter++;
 
   event.target.identifier.value = null;
   event.target.storeName.value = null;
@@ -190,6 +195,6 @@ function handleNewStoreSubmit(event){
   event.target.avgCookiesPerCust.value = null;
   // console.log(event.target);
 
-}
+};
 
 new_store_form.addEventListener('submit',handleNewStoreSubmit);
