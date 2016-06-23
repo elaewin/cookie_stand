@@ -51,18 +51,18 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
   };
 
   // Display the sales numbers for a given store as a list.
-  // ADD CLASS FOR CELLS WITH THE LOC NAMES
   // ADD IDS TO THE ROWS AS THEY'RE CREATED
   this.render = function(rowColorCheck) {
     var salesTotal = this.projectedSales();
     var trEl = document.createElement('tr');
+    trEl.id = this.identifier;
     if((rowColorCheck % 2) === 0) {
       trEl.className = 'grey';
     }
     var tdEl = document.createElement('td');
+    tdEl.className = 'store';
     tdEl.textContent = storeName;
     trEl.appendChild(tdEl);
-    // GET RID OF VAR ON VARIABLES THAT ARE ALREADY DECLARED IN THE FUNCTION
     var tdEl = document.createElement('td');
     tdEl.textContent = salesTotal;
     trEl.appendChild(tdEl);
@@ -79,6 +79,7 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
 function getRandomIntInclusive(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
 // Create instance of CookieHut for all existing stores.
 var firstAndPike = new CookieHut('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 23, 65, 6.3);
 
@@ -90,12 +91,12 @@ var capitolHill = new CookieHut('capitolhill', 'Capitol Hill', '434 Broadway Ave
 
 var alki = new CookieHut('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 2, 16, 4.6);
 
+// Functions to populate the sales table with projected sales information
 
-// Populate the sales table with projected sales information
 // Generate header row
-// ADD CLASSES TO THE CELLS IN THE HEADER ROW
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
+  trEl.id = 'header';
   var thEl = document.createElement('th'); // blank space in header row
   thEl.textContent = '';
   trEl.appendChild(thEl);

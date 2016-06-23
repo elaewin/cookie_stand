@@ -1,5 +1,5 @@
 /* ORGANIZE THIS BY AREAS STYLED, SO HEADER, FOOTER, GLOBAL STYLES, INDIVIDUAL PAGE STYLES, ETC. */
-
+/* Global Styles */
 * {
   margin: 0px;
   padding: 0px;
@@ -15,20 +15,6 @@ body {
   padding-top: 80px;
 }
 
-h2, h3, h4, h5 {
-  font-family: 'Open Sans', sans-serif;
-  padding: 10px 10px 0px;
-}
-
-header {
-  background-color: #202b19;
-  color: #fff;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
 h1 {
   display: inline;
   font-family: 'Contrail One', cursive;
@@ -38,8 +24,9 @@ h1 {
   text-transform: uppercase;
 }
 
-.fish {
-  height: 80px;
+h2, h3, h4, h5 {
+  font-family: 'Open Sans', sans-serif;
+  padding: 10px 10px 0px;
 }
 
 p {
@@ -52,6 +39,17 @@ p {
   border: 2px solid #B25535;
 }
 
+/* Header */
+header {
+  background-color: #202b19;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Index Page Styles */
 .highlight_container h3 {
   color: #652914;
   font-family: 'Contrail One', cursive;
@@ -65,18 +63,45 @@ p {
   font-style: italic;
 }
 
+/* Sales Page Styles */
+form {
+  margin: 10px 10px 0;
+}
+
+fieldset {
+  border: none;
+  margin: 20px 0; /* don't need the unit on the 0 */
+}
+
+label[for="minCustsPerHour"] {
+  display: block;
+}
+
+/* attribute selector...INCREDIBLY useful!*/
+input[type="text"], input[type="number"], input[type="tel"] {
+  padding: 5px 10px;
+}
+
+input[type="submit"] {
+  border: none;
+  padding: 8px 22px;
+  border-radius: 5px;
+  color: white;
+  background: #202b19;
+  transition: 750ms all;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="submit"]:hover {
+  background: #547042;
+}
+
 table {
   border: 1px solid black;
   border-collapse: collapse;
   margin: 10px;
-}
-
-.grey {
-  background-color: #ccc;
-}
-
-.data {
-  font-family: 'Open Sans', sans-serif;
 }
 
 td, th {
@@ -85,6 +110,20 @@ td, th {
   text-align: right;
 }
 
+.data {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.grey {
+  background-color: #ccc;
+}
+
+/* Image Styles */
+.fish {
+  height: 80px;
+}
+
+/* Footer */
 footer {
   background-color: #202b19;
   color: #fff;
