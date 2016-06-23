@@ -64,10 +64,50 @@ header {
 }
 
 /* Sales Page Styles */
+form {
+  margin: 10px 10px 0;
+}
+
+fieldset {
+  border: none;
+  margin: 20px 0; /* don't need the unit on the 0 */
+}
+
+label[for="minCustsPerHour"] {
+  display: block;
+}
+
+/* attribute selector...INCREDIBLY useful!*/
+input[type="text"], input[type="number"], input[type="tel"] {
+  padding: 5px 10px;
+}
+
+input[type="submit"] {
+  border: none;
+  padding: 8px 22px;
+  border-radius: 5px;
+  color: white;
+  background: #202b19;
+  transition: 750ms all;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input[type="submit"]:hover {
+  background: #547042;
+}
+
 table {
   border: 1px solid black;
   border-collapse: collapse;
   margin: 10px;
+}
+
+td, th {
+  border: 1px dotted grey;
+  padding: 0px 5px;
+  text-align: right;
 }
 
 .data {
@@ -76,12 +116,6 @@ table {
 
 .grey {
   background-color: #ccc;
-}
-
-td, th {
-  border: 1px dotted grey;
-  padding: 0px 5px;
-  text-align: right;
 }
 
 /* Image Styles */
