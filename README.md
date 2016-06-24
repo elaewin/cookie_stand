@@ -1,6 +1,8 @@
 # cookie_stand
 Codefellows 201 week 2 lab project repo
 
+### Style Guide in guide.html
+
 Using Open Sans 400, Open Sans 700 (bold), Contrail One, and Lora from Google Fonts.
 
 Palettes:

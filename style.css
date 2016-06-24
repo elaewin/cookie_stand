@@ -1,66 +1,208 @@
-/* ORGANIZE THIS BY AREAS STYLED, SO HEADER, FOOTER, GLOBAL STYLES, INDIVIDUAL PAGE STYLES, ETC. */
-/* Global Styles */
-* {
-  margin: 0px;
-  padding: 0px;
-  outline: 1px dashed orange;
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
 }
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* BASE STYLES */
 
 body {
-  font-family: 'Lora', serif;
   color: #000;
+  font-family: "Lora", serif;
+  font-size: 16px;
+  line-height: 28px;
 }
 
-#content_wrapper {
-  padding-top: 80px;
+.clearfix {
+  clear: both;
+}
+
+/* Header Styles */
+
+header {
+  background-color: #202b19;
+  height: 80px;
+}
+
+header div {
+  height: 80px;
+  width: 960px;
+  margin: 0 auto;
+}
+
+header div img {
+  float: left;
+}
+
+header ul li {
+  display: inline-block;
+  margin-left: 50px;
+  margin-top: 30px;
+  color: #fff;
+  font-family: "Contrail One", cursive;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  justify-content: space-around;
+}
+
+/* Content Styles */
+
+main {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.banner {
+  height: 300px;
+  width: 960px;
+  margin: 30px auto;
+  background-image: url('images/salmon-transparent.png');
+  background-size: contain;
 }
 
 h1 {
-  display: inline;
-  font-family: 'Contrail One', cursive;
-  font-variant: small-caps;
-  letter-spacing: 3px;
-  text-shadow: -1px -1px #B25535;
-  text-transform: uppercase;
+  font-size: 80px;
+  padding: 120px 0 30px;
 }
 
 h2, h3, h4, h5 {
-  font-family: 'Open Sans', sans-serif;
-  padding: 10px 10px 0px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  line-height: normal;
+  margin: 10px 0;
 }
 
-p {
-  padding: 5px 10px;
-}
-
-.highlight_container {
-  margin: 15px 45px;
-  padding: 5px;
-  border: 2px solid #B25535;
-}
-
-/* Header */
-header {
-  background-color: #202b19;
-  color: #fff;
-  padding: 20px;
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-/* Index Page Styles */
-.highlight_container h3 {
-  color: #652914;
-  font-family: 'Contrail One', cursive;
+h2 {
   font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+h4 {
+  font-size: 100%;
+}
+
+h5 {
+  font-size: 90%;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+h1, main div h2 {
+  color: #652914;
+  font-family: "Contrail One", cursive;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: -1px -1px #b25535;
+}
+
+main div h2 {
+  font-size: 30px;
+  padding: 30px 0;
+}
+
+blockquote {
+  margin: 15px 0;
+  padding: 10px;
+  border: 2px solid #B25535;
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(84, 112, 66, 0.3);
+}
+
+.highlight {
+  color: #652914;
+  font-family: 'Contrail One', sans-serif;
+  font-size: 1.5em;
+  font-style: normal;
   letter-spacing: 1px;
+  margin-bottom: 5px;
   text-shadow: -1px -1px #fe8c65;
   text-transform: uppercase;
 }
 
-.highlight_container p {
-  font-style: italic;
+blockquote p {
+  text-align: center;
+}
+
+main ul .merch {
+  position: relative;
+  float: left;
+  height: 300px;
+  width: 300px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  outline: 1px solid #202b19;
+}
+
+main ul li:last-child {
+  margin-right: 0px;
+}
+
+.merch_overlay {
+  position: absolute;
+  bottom: 0;
+  height: 60px;
+  width: 300px;
+  background-color: rgba(84, 112, 66, 0.6);
+}
+
+main ul li div h4 {
+  margin-top: 15px;
+  text-align: center;
+}
+
+p {
+  font-family: Lora, serif;
+  font-size: 16px;
+  line-height: 28px;
 }
 
 /* Sales Page Styles */
@@ -101,6 +243,7 @@ input[type="submit"]:hover {
 table {
   border: 1px solid black;
   border-collapse: collapse;
+  font-family: "Open Sans", sans-serif;
   margin: 10px;
 }
 
@@ -110,29 +253,40 @@ td, th {
   text-align: right;
 }
 
-.data {
-  font-family: 'Open Sans', sans-serif;
+th {
+  background-color: #202b19;
+  color: white;
+  border-bottom: 1px solid #000;
 }
 
 .grey {
   background-color: #ccc;
 }
 
-/* Image Styles */
-.fish {
-  height: 80px;
+.footer {
+  border-top: 1px solid #000;
+  font-weight: bold;
 }
 
-/* Footer */
+.v_header {
+  font-weight: bold;
+  border-right: 1px solid #000;
+}
+
+
+/* Footer Styles */
 footer {
+  clear: both;
+  height: 50px;
+  width: 960px;
   background-color: #202b19;
   color: #fff;
-  padding: 20px;
-  margin-top: 10px;
-  width: 100%;
+  padding: 30px 0 0;
+  margin: 0px auto;
 }
 
 footer p {
+  color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.8em;
   text-align: center;
