@@ -1,3 +1,8 @@
+/* REMOVE ALL TEXT SHADOWS */
+
+/* ORGANIZE THE PROJECT INTO DIRECTORY FILES */
+/* PUT THIS IN A SEPARATE FILE */
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -46,6 +51,8 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/* ### END OF RESET ### */
 
 /* BASE STYLES */
 
@@ -266,6 +273,7 @@ table {
   font-family: "Open Sans", sans-serif;
   font-size: 85%;
   margin: 30px 0;
+  width: 960px;
 }
 
 td, th {
@@ -345,7 +353,7 @@ footer {
   width: 100%;
 }
 
-header div {
+footer div {
   width: 960px;
   margin: 0 auto;
 }

@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // Array of stores
 var allStoresArray = [];
@@ -63,22 +63,13 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
     tdEl.className = 'v_header';
     tdEl.textContent = storeName;
     trEl.appendChild(tdEl);
-    var tdEl = document.createElement('td');
-    tdEl.textContent = salesTotal;
-    trEl.appendChild(tdEl);
+    buildElement('td', salesTotal, trEl);
     for(var i = 0; i < this.cookiesPerHourArray.length; i++) {
-      var tdEl = document.createElement('td');
-      tdEl.textContent = this.cookiesPerHourArray[i];
-      trEl.appendChild(tdEl);
+      buildElement('td', this.cookiesPerHourArray[i], trEl);
     }
     salesTable.appendChild(trEl);
   };
 };
-
-// Returns a random integer between min (included) and max (included)
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 // Create instance of CookieHut for all existing stores.
 var firstAndPike = new CookieHut('firstandpike', '1st and Pike', '102 Pike St, Seattle, WA 98101', '206-xxx-xxxx', 23, 65, 6.3);
@@ -91,22 +82,31 @@ var capitolHill = new CookieHut('capitolhill', 'Capitol Hill', '434 Broadway Ave
 
 var alki = new CookieHut('alki', 'Alki', '2742 Alki Ave SW; Seattle, WA 98116', '206-xxx-xxxx', 2, 16, 4.6);
 
+// Returns a random integer between min (included) and max (included)
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 // Functions to populate the sales table with projected sales information
+
+// UPDATE EXISTING FUNCTIONS WITH THIS SO THEY'RE SHORTER!
+// Builds an element and adds it to another element, attribute optional
+function buildElement(kind, content, where, attName, attValue) {
+  var x = document.createElement(kind);
+  x.textContent = content;
+  if(attName && attValue) {
+    x.setAttribute(attName, attValue);
+  }
+  where.appendChild(x);
+}
 
 // Generate header row
 function makeHeaderRow() {
   var trEl = document.createElement('tr');
-  trEl.id = 'header';
-  var thEl = document.createElement('th'); // blank space in header row
-  thEl.textContent = '';
-  trEl.appendChild(thEl);
-  thEl = document.createElement('th');
-  thEl.textContent = 'Daily Total';
-  trEl.appendChild(thEl);
-  for(i = 0; i < openHoursArray.length; i++) {
-    thEl = document.createElement('th');
-    thEl.textContent = openHoursArray[i];
-    trEl.appendChild(thEl);
+  trEl.id = 'table_header';
+  buildElement('th', '', trEl);
+  buildElement('th', 'Daily Total', trEl);
+  for(var i = 0; i < openHoursArray.length; i++) {
+    buildElement('th', openHoursArray[i], trEl);
   }
   salesTable.appendChild(trEl);
 }
@@ -116,27 +116,21 @@ function makeHeaderRow() {
 function makeFooterRow() {
   var trEl = document.createElement('tr');
   trEl.className = 'table_footer';
-  var tdEl = document.createElement('td'); // blank space in footer row
-  tdEl.textContent = 'Totals';
-  trEl.appendChild(tdEl);
-  tdEl = document.createElement('td');
+  buildElement('td', '', trEl); // blank space in footer row
   var grandTotal = 0;
   for(var i = 0; i < allStoresArray.length; i++) {
     grandTotal += allStoresArray[i].dailySalesTotal;
   }
-  tdEl.textContent = grandTotal;
-  trEl.appendChild(tdEl);
-  for( i = 0; i < openHoursArray.length; i++) {
-    tdEl = document.createElement('td');
+  buildElement('td', grandTotal, trEl);
+  for(var i = 0; i < openHoursArray.length; i++) {
     var totalByHour = 0;
     for(var j = 0; j < allStoresArray.length; j++) {
       totalByHour += allStoresArray[j].cookiesPerHourArray[i];
     }
-    tdEl.textContent = totalByHour;
-    trEl.appendChild(tdEl);
+    buildElement('td', totalByHour, trEl);
   }
   salesTable.appendChild(trEl);
-};
+}
 
 // Generate sales numbers for each store in an array of stores
 function generateSalesNumbers() {
@@ -177,13 +171,10 @@ function handleNewStoreSubmit(event){
   event.target.minCustsPerHour.value = null;
   event.target.maxCustsPerHour.value = null;
   event.target.avgCookiesPerCust.value = null;
-  // console.log(event.target);
-
 };
 
 // Event listener to add a new store
 new_store_form.addEventListener('submit', handleNewStoreSubmit);
-console.log('Clicked!');
 
 makeHeaderRow();
 generateSalesNumbers();
