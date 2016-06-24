@@ -120,7 +120,7 @@ function makeFooterRow() {
   tdEl.textContent = 'Totals';
   trEl.appendChild(tdEl);
   tdEl = document.createElement('td');
-  grandTotal = 0;
+  var grandTotal = 0;
   for(var i = 0; i < allStoresArray.length; i++) {
     grandTotal += allStoresArray[i].dailySalesTotal;
   }
@@ -145,20 +145,10 @@ function generateSalesNumbers() {
     allStoresArray[i].render(i);
   }
 }
-// function testInConsole() {
-//   for (var i = 0; i < allStoresArray.length; i++){
-//     allStoresArray[i].generateHourlyTraffic();
-//     console.dir(allStoresArray[i]);
-//   }
-// }
-makeHeaderRow();
-generateSalesNumbers();
-makeFooterRow();
-//add new store
 
+// Adds a new store via the 'sales' form on sales.html
 function handleNewStoreSubmit(event){
   event.preventDefault();
-  var counter = 1;
 
   var identifier = event.target.identifier.value;
   var storeName = event.target.storeName.value;
@@ -176,15 +166,6 @@ function handleNewStoreSubmit(event){
 
   salesTable.innerHTML = '';
 
-  // console.log('salesTable', salesTable);
-  // var foot = document.getElementById('footer');
-  // foot.textContent = '';
-  // console.log(foot);
-  //
-  // newStore.render(counter);
-  // makeFooterRow();
-  //
-  // counter++;
   makeHeaderRow();
   generateSalesNumbers();
   makeFooterRow();
@@ -200,4 +181,9 @@ function handleNewStoreSubmit(event){
 
 };
 
-new_store_form.addEventListener('submit',handleNewStoreSubmit);
+// Event listener to add a new store
+new_store_form.addEventListener('submit', handleNewStoreSubmit);
+
+makeHeaderRow();
+generateSalesNumbers();
+makeFooterRow();
