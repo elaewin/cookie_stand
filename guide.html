@@ -2,22 +2,39 @@
 <html>
   <head>
     <link href="https://fonts.googleapis.com/css?family=Contrail+One|Lora:400,400i,700|Open+Sans:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="guide.css"
+    <link rel="stylesheet" href="guide.css">
   </head>
   <body>
-    <header></header>
+    <header>
+      <h1 class="header">Pat's Salmon Cookies</h1>
+    </header>
     <main>
       <section id="colors">
+        <h2>Style Guide</h2>
         <h3>Colors</h3>
-        <p>Primary: #------</p>
-        <div class="color"></div>
-        <p>Secondary: #------</p>
-        <div class="color"></div>
-        <p>Tertiary: #------</p>
-        <div class="color"></div>
+        <ul>
+          <li>
+            <div class="dark_tc"></div>
+            <p>Primary: #652914</p>
+            <p>Hightlight: #B25535</p>
+            <div class="tc"></div></li>
+          <li>
+            <div class="tc"></div>
+            <p>Secondary: #B25535</p>
+            <p>Highlight: #fe8c65</p>
+            <div class="light_tc"></div>
+          </li>
+          <li>
+            <div class="dark_green"></div>
+            <p>Tertiary: #202b19</p>
+            <p>Highlight: #547042</p>
+            <div class="lt_green">
+          </li>
+        </ul>
       </section>
       <div class="clearfix"></div>
       <section id="typography">
+      <h2>Typography</h2>
       <ul class="structural">
         <li>
           <dl>
@@ -29,7 +46,7 @@
             <dd>Open Sans 400</dd>
             <dt>Link Text</dt>
             <dd>
-              <p>Link, <span class="visited">Visited</span>, <span class="hover">Hover</span>, <span class="active">Active</span></p>
+              <p><span class="link">Link</span>, <span class="visited">Visited</span>, <span class="hover">Hover</span>, <span class="active">Active</span></p>
             </dd>
             <dt>Strong Text</dt>
             <dd><strong>Strong text; used to indicate importance.</strong></dd>
@@ -53,14 +70,18 @@
             <dd><h3>Heading 3<h3></dd>
             <dt>Heading 4</dt>
             <dd><h4>Heading 4<h4></dd>
+            <dt>Heading 5</dt>
+            <dd><h5>Heading 5</h5></dd>
           </dl>
           <div class="clearfix"></div>
+          <h1 class="header">Site Header</h1>
           <blockquote><span class="highlight">This is a highlight</span>They're cookies made into the shape of a salmon, and actually made with salmon (though the fish is ground up so fine that you can't even taste it!) that is the ideal match for a steaming cup of coffee on a gray Seattle morning.</blockquote>
         </li>
       </ul>
     </section>
     <div class="clearfix"></div>
     <section id="lists">
+      <h2>Lists</h2>
       <ul class="structural">
         <li>
           <h3>Unordered List</h3>
@@ -92,75 +113,89 @@
     </section>
     <div class="clearfix"></div>
     <section id="tables_and_forms">
-      <h3>Tables</h3>
-      <table>
-        <tr>
-          <th>table header</th>
-          <th>table header</th>
-          <th>table header</th>
-        </tr>
-        <tr>
-          <td>white row</td>
-          <td>123</td>
-          <td>456</td>
-        </tr>
-        <tr class="grey">
-          <td>grey row</td>
-          <td>123</td>
-          <td>456</td>
-        </tr>
-        <tr>
-          <td>white row</td>
-          <td>456</td>
-          <td>789</td>
-        </tr>
-        <tr class="footer">
-          <td>footer row</td>
-          <td>123</td>
-          <td>456</td>
-        </tr>
-      </table>
-      <h3>Forms</h3>
-      <form>
-        <fieldset>
-          <label for="text_input">Text Input</label>
-          <input id="text_input" type="text" name="text_input">
-          <label for="error">Validation Error</label>
-          <input id="error" type="text" name="error">
-          <label for="telephone">Telephone</label>
-          <input id="telephone" type="tel" name="telephone">
-          <label for="number_input">Number Input</label>
-          <input id="number_input" type="number" name="number_input">
-          <label for="placeholder">Placeholder Text</label>
-          <input id="placeholder" type="text" name="placeholder" placeholder="Placeholder Text">
-        </fieldset>
-      </form>
+      <h2>Tables and Forms</h2>
+      <ul class="structural">
+        <li>
+          <h3>Tables</h3>
+            <table>
+              <tr>
+                <th></th>
+                <th>Table Header</th>
+                <th>Table Header</th>
+              </tr>
+              <tr>
+                <td class="v_header">white row</td>
+                <td>123</td>
+                <td>456</td>
+              </tr>
+              <tr class="grey">
+                <td class="v_header">grey row</td>
+                <td>123</td>
+                <td>456</td>
+              </tr>
+              <tr>
+                <td class="v_header">white row</td>
+                <td>456</td>
+                <td>789</td>
+              </tr>
+              <tr class="footer">
+                <td class="v_header">footer row</td>
+                <td>123</td>
+                <td>456</td>
+              </tr>
+            </table>
+          </li>
+          <li>
+          <h3>Forms</h3>
+          <form>
+            <fieldset>
+              <label for="text_input">Text Input</label>
+              <input id="text_input" type="text" name="text_input">
+              <label for="error">Validation Error</label>
+              <input id="error" type="text" name="error">
+              <label for="telephone">Telephone</label>
+              <input id="telephone" type="tel" name="telephone">
+              <label for="number_input">Number Input</label>
+              <input id="number_input" type="number" name="number_input">
+              <label for="placeholder">Placeholder Text</label>
+              <input id="placeholder" type="text" name="placeholder" placeholder="Placeholder Text">
+            </fieldset>
+          </form>
+        </li>
+      </ul>
     </section>
     <div class="clearfix"></div>
     <section id="buttons">
+      <h3>Buttons</h3>
       <ul>
         <li>
-          <button class="primary">Primary</button>
+          <button class="primary">Primary Color Button</button>
         </li>
         <li>
-          <button class="secondary">Secondary</button>
+          <button class="secondary">Secondary Color Button</button>
         </li>
         <li>
-          <button class="call">Call to Action</button>
+          <button class="call">Tertiary Color Button</button>
         </li>
       </ul>
     </section>
     <div class="clearfix"></div>
     <section id="addresses">
-      <h3>Addresses</h3>
-      <h5 class="address_title">Address Title</h5>
-      <p class="address">Address Name</p>
-      <p class="address">1234 Street Avenue</p>
-      <p class="address">City ST 01234</p>
-      <p class="address">Tel: 234-567-8901</p>
-      <h3>Messages</h3>
-      <p class="msg general">General Message</p>
-      <p class="msg alert">Alert Message</p>
+      <ul class="structural">
+        <li>
+          <h3>Addresses</h3>
+          <h5>Address Title</h5>
+          <p class="address">Address Name</p>
+          <p class="address">1234 Street Avenue</p>
+          <p class="address">City ST 01234</p>
+          <p class="address">Tel: 234-567-8901</p>
+        </li>
+        <li>
+          <h3>Messages</h3>
+          <p class="msg green">General Message</p>
+          <p class="msg alert">Alert Message</p>
+        </li>
+      </ul>
     </section>
   </body>
 </html>
