@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // Array of stores
 var allStoresArray = [];
@@ -60,7 +60,7 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
       trEl.className = 'grey';
     }
     var tdEl = document.createElement('td');
-    tdEl.className = 'store';
+    tdEl.className = 'v_header';
     tdEl.textContent = storeName;
     trEl.appendChild(tdEl);
     var tdEl = document.createElement('td');
@@ -101,7 +101,7 @@ function makeHeaderRow() {
   thEl.textContent = '';
   trEl.appendChild(thEl);
   thEl = document.createElement('th');
-  thEl.textContent = 'Daily Location Total';
+  thEl.textContent = 'Daily Total';
   trEl.appendChild(thEl);
   for(i = 0; i < openHoursArray.length; i++) {
     thEl = document.createElement('th');
@@ -115,7 +115,7 @@ function makeHeaderRow() {
 // ADD CLASSES TO THE CELLS IN THE FOOTER ROW
 function makeFooterRow() {
   var trEl = document.createElement('tr');
-  trEl.id = 'footer';
+  trEl.className = 'table_footer';
   var tdEl = document.createElement('td'); // blank space in footer row
   tdEl.textContent = 'Totals';
   trEl.appendChild(tdEl);
@@ -183,6 +183,7 @@ function handleNewStoreSubmit(event){
 
 // Event listener to add a new store
 new_store_form.addEventListener('submit', handleNewStoreSubmit);
+console.log('Clicked!');
 
 makeHeaderRow();
 generateSalesNumbers();
