@@ -90,6 +90,25 @@ header ul li {
   justify-content: space-around;
 }
 
+header a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+header a:visited {
+  color: #fff;
+}
+
+header a:hover {
+  color: #f38c65;
+  font-weight: bold;
+}
+
+header a:active {
+  color: #fe8c65;
+  font-weight: bold;
+}
+
 /* Content Styles */
 
 main {
