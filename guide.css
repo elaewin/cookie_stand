@@ -49,10 +49,14 @@ table {
 
 /* BASE STYLES */
 
+* {
+/*   outline: 1px dashed blue; */
+}
+
 body {
   font-family: Lora, serif;
   font-size: 16px;
-  line-height: 1.25em;
+  line-height: 28px;
 }
 
 main {
@@ -60,8 +64,46 @@ main {
   margin: 0 auto;
 }
 
+section {
+  margin-bottom: 20px;
+  width: 960px;
+}
+
 .clearfix {
   clear: both;
+}
+
+/* COLOR STYLES */
+#colors li {
+  display: inline-block;
+  margin: 10px 20px;
+}
+
+#colors div {
+  height: 80px;
+  width: 80px;
+  margin: 0 auto;
+  border-radius: 100%;
+}
+
+.dark_tc {
+  background-color: #652914;
+}
+
+.tc {
+  background-color: #b25535;
+}
+
+.light_tc {
+  background-color: #fe8c65;
+}
+
+.dark_green {
+  background-color: #202b19;
+}
+
+.lt_green {
+  background-color: #547042;
 }
 
 /* TYPOGRAPHICAL STYLES */
@@ -69,7 +111,7 @@ main {
 p {
   font-family: Lora, serif;
   font-size: 16px;
-  line-height: 1.25em;
+  line-height: 28px;
 }
 
 .em {
@@ -82,7 +124,37 @@ p {
   font-weight: bold;
 }
 
+.link {
+  color: #b25535;
+}
+
+.visited {
+  color: #652914;
+}
+
+.hover {
+  color: #b25535;
+  font-weight: bold;
+}
+
+.active {
+  color: #fe8c65;
+  font-weight: bold;
+}
 /* Headings */
+
+.header {
+  font-family: 'Contrail One', cursive;
+  font-variant: small-caps;
+  letter-spacing: 3px;
+  text-shadow: -1px -1px #B25535;
+  text-transform: uppercase;
+  background-color: #202b19;
+  color: #fff;
+  padding: 20px;
+  width: 100%;
+}
+
 h1 {
   font-family: 'Contrail One', cursive;
   font-size: 2.5em;
@@ -92,10 +164,11 @@ h1 {
   text-transform: uppercase;
 }
 
-h2, h3, h4 {
+h2, h3, h4, h5 {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   line-height: normal;
+  margin: 10px 0;
 }
 
 h2 {
@@ -108,6 +181,12 @@ h3 {
 
 h4 {
   font-size: 100%;
+}
+
+h5 {
+  font-size: 90%;
+  text-transform: uppercase;
+  margin-bottom: 5px;
 }
 
 .highlight {
@@ -146,7 +225,6 @@ dl {
   float: left;
   clear: both;
   width: 100%;
-  outline: 1px dashed red;
 }
 
 dt {
@@ -157,7 +235,6 @@ dt {
   font-variant: small-caps;
   margin: 0 5px 10px;
   width: 22%;
-  outline: 1px dashed blue;
 }
 
 dd {
@@ -165,42 +242,155 @@ dd {
   clear: none;
   width: 70%;
   padding-right: 20px;
-  outline: 1px dashed blue;
 }
 
 .structural li ul li {
   display: list-item;
-  line-height: normal;
+  line-height: 24px;
   list-style-position: inside;
   list-style-type: square;
   margin-bottom: 0px;
-  outline: 1px dashed red;
 }
 
 ul li ul li {
   display: list-item;
-  line-height: normal;
+  line-height: 24px;
   list-style-position: inside;
   list-style-type: square;
   margin-left: 20px;
-  outline: 1px dashed red;
 }
 
 
 .structural li ol li {
   display: list-item;
-  line-height: normal;
+  line-height: 24px;
   list-style-position: inside;
   list-style-type: decimal;
   margin: 0 20px;
-  outline: 1px dashed red;
 }
 
 ol li ol li {
   display: list-item;
-  line-height: normal;
+  line-height: 24px;
   list-style-position: inside;
   list-style-type: decimal;
   margin: 0 20px;
-  outline: 1px dashed red;
+}
+
+/* TABLE STYLES */
+
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-family: "Open Sans", sans-serif;
+  margin: 10px;
+}
+
+td, th {
+  border: 1px dotted grey;
+  padding: 0px 5px;
+  text-align: right;
+}
+
+th {
+  background-color: #202b19;
+  color: white;
+  border-bottom: 1px solid #000;
+}
+
+.grey {
+  background-color: #ccc;
+}
+
+.footer {
+  border-top: 1px solid #000;
+  font-weight: bold;
+}
+
+.v_header {
+  font-weight: bold;
+  border-right: 1px solid #000;
+}
+
+/* FORM STYLES */
+
+form {
+  font-family: "Open Sans", sans-serif;
+}
+
+label {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+input:placeholder {
+  text-transform: uppercase;
+}
+
+/* BUTTON CLASSES */
+
+#buttons ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+button {
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 8px 25px;
+  text-decoration: none;
+  transition: 500ms all;
+}
+
+.primary {
+  background: #652914;
+}
+
+.primary:hover {
+  background: #B25535;
+  cursor: pointer;
+}
+
+.secondary {
+  background: #B25535;
+}
+
+.secondary:hover {
+  background: #fe8c65;
+}
+
+.call {
+  background: #202b19;
+}
+
+.call:hover {
+  background: #547042;
+}
+
+/* Addresses */
+.address {
+  font-family: "Open Sans", sans-serif;
+  line-height: 22px;
+}
+
+/* Messages */
+.msg {
+  display: inline-block;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 5px;
+  color: #fff;
+  margin: 10px 0;
+  padding: 8px 25px;
+  text-align: center;
+  width: 100%;
+}
+
+.green {
+  background-color: #093;
+}
+
+.alert {
+  background-color: #900;
 }
