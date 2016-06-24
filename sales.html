@@ -1,40 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sales - Pat's Salmon Cookies</title>
-  <link href="https://fonts.googleapis.com/css?family=Contrail+One|Lora|Open+Sans:400,700" rel="stylesheet">
+  <title>Pat's Salmon Cookies</title>
+  <link href="https://fonts.googleapis.com/css?family=Contrail+One|Lora:400,400i,700|Open+Sans:400,700" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
   <header>
-    <h1>Pat's Salmon Cookies</h1>
+    <div><a href="index.html"><img src="images/fishlogo.png"></a>
+      <ul>
+        <li>Pat's Story</li>
+        <li>Locations</li>
+        <li>Shop</li>
+      <ul>
+    </div>
   </header>
   <main>
     <h2>Sales Projections</h2>
     <form id="new_store_form">
       <fieldset>
-        <!-- <legend>Add A New Store</legend> -->
-        <label for="storeName">Store Name:</label>
-        <input id="storeName" type="text" name="storeName" placeholder="Store name or location" />
-        <label for="identifier">Store ID:</label>
-        <input id="identifier" type="text" name="identifier" placeholder="A single word id" />
-        <label for="storeAddress">Address:</label>
-        <input id="storeAddress" type="text" name="storeAddress">
-        <label for="storePhone">Phone:</label>
-        <input id="storePhone" type="tel" name="storePhone">
-        <label for="minCustsPerHour">Min. Customers/Hour:</label>
-        <input id="minCustsPerHour" type="number" name="minCustsPerHour" placeholder="Must be a number">
-        <label for="maxCustsPerHour">Max. Customers/Hour:</label>
-        <input id="maxCustsPerHour" type="number" name="maxCustsPerHour" placeholder="Must be a number">
-        <label for="avgCookiesPerCust">Avg. Sold Per Customer:</label>
-        <input id="avgCookiesPerCust" type="number" name="avgCookiesPerCust" placeholder="Must be a number">
+        <legend>Add A New Store</legend>
+        <ul class="formlist">
+          <li>
+            <label for="storeName">Store Name:</label>
+            <input id="storeName" type="text" name="storeName" placeholder="Store name or location" />
+          </li>
+          <li>
+            <label for="identifier">Store ID:</label>
+            <input id="identifier" type="text" name="identifier" placeholder="A single word id" />
+          </li>
+        </ul>
+        <ul class="formlist">
+          <li>
+            <label for="storeAddress">Address:</label>
+            <input id="storeAddress" type="text" name="storeAddress">
+          </li>
+          <li>
+            <label for="storePhone">Phone:</label>
+            <input id="storePhone" type="tel" name="storePhone">
+          </li>
+        </ul>
+        <ul class="formlist">
+          <li>
+            <label for="minCustsPerHour">Min. Cust/Hour:</label>
+            <input id="minCustsPerHour" type="number" name="minCustsPerHour" placeholder="Must be a number">
+          </li>
+          <li>
+            <label for="maxCustsPerHour">Max. Cust/Hour:</label>
+            <input id="maxCustsPerHour" type="number" name="maxCustsPerHour" placeholder="Must be a number">
+          </li>
+          <li>
+            <label for="avgCookiesPerCust">Avg. Cookies Sold:</label>
+            <input id="avgCookiesPerCust" type="number" name="avgCookiesPerCust" placeholder="Must be a number">
+          </li>
+        </ul>
       </fieldset>
         <input type="submit" value="Submit New Store Information" class="new_store">
     </form>
     <table id="sales" class="data"></table>
   </main>
   <footer>
-    <p>&#169; 2016 Pat's Salmon Cookies</p>
+    <div>
+      <p>&#169; 2016 Pat's Salmon Cookies</p>
+    </div>
   </footer>
   <script src="app.js"></script>
 </body>

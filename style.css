@@ -64,7 +64,7 @@ body {
 
 header {
   background-color: #202b19;
-  height: 80px;
+  height: 85px;
 }
 
 header div {
@@ -85,6 +85,7 @@ header ul li {
   font-family: "Contrail One", cursive;
   font-size: 1.5em;
   letter-spacing: 2px;
+  text-shadow: -1px -1px #b25535;
   text-transform: uppercase;
   justify-content: space-around;
 }
@@ -244,7 +245,8 @@ table {
   border: 1px solid black;
   border-collapse: collapse;
   font-family: "Open Sans", sans-serif;
-  margin: 10px;
+  font-size: 85%;
+  margin: 30px 0;
 }
 
 td, th {
@@ -263,26 +265,70 @@ th {
   background-color: #ccc;
 }
 
-.footer {
+.table_footer {
   border-top: 1px solid #000;
   font-weight: bold;
 }
 
 .v_header {
   font-weight: bold;
-  border-right: 1px solid #000;
 }
 
+/* Form Styles */
+
+form {
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid #202b19;
+  border-radius: 8px;
+}
+
+legend {
+  padding-left: 20px;
+}
+
+label {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.formlist li {
+  display: inline-block;
+  margin-top: 5px;
+  padding-left: 20px;
+  justify-content: space-around;
+}
+
+input[type="submit"] {
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  font-size: 16px;
+  margin: 0 0 10px 10px;
+  padding: 5px 15px;
+  text-decoration: none;
+  transition: 500ms all;
+}
+
+.new_store {
+  background: #652914;
+}
+
+.new_store:hover {
+  background: #B25535;
+  cursor: pointer;
+}
 
 /* Footer Styles */
 footer {
   clear: both;
-  height: 50px;
-  width: 960px;
   background-color: #202b19;
-  color: #fff;
-  padding: 30px 0 0;
-  margin: 0px auto;
+  height: 90px;
+  width: 100%;
+}
+
+header div {
+  width: 960px;
+  margin: 0 auto;
 }
 
 footer p {
@@ -290,4 +336,5 @@ footer p {
   font-family: 'Open Sans', sans-serif;
   font-size: 0.8em;
   text-align: center;
+  padding-top: 30px;
 }
