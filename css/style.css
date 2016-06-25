@@ -76,6 +76,25 @@ main {
   margin: 0 auto;
 }
 
+a:link {
+  color: #b25535;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #652914;
+}
+
+a:hover {
+  color: #b25535;
+  font-weight: bold;
+}
+
+a:active {
+  color: #fe8c65;
+  font-weight: bold;
+}
+
 .banner {
   height: 300px;
   width: 960px;
@@ -167,14 +186,15 @@ main ul li:last-child {
 .merch_overlay {
   position: absolute;
   bottom: 0;
-  height: 60px;
+  height: 80px;
   width: 300px;
-  background-color: rgba(84, 112, 66, 0.6);
+  background-color: rgba(84, 112, 66, 0.5);
 }
 
-main ul li div h4 {
-  margin-top: 15px;
+main ul li div h3 {
+  margin-top: 20px;
   text-align: center;
+  /*color: #fff;*/
 }
 
 p {
@@ -184,40 +204,81 @@ p {
 }
 
 /* Sales Page Styles */
+.formlist li {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  min-width: 235px;
+  justify-content: space-around;
+}
+
 form {
   margin: 10px 10px 0;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid #202b19;
+  border-radius: 8px;
 }
 
 fieldset {
   border: none;
-  margin: 20px 0; /* don't need the unit on the 0 */
+  margin: 5px 0;
 }
 
-label[for="minCustsPerHour"] {
-  display: block;
+legend {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 20px;
+}
+
+label {
+  font-size: 12px;
+  text-transform: uppercase;
+  width: 80px;
 }
 
 /* attribute selector...INCREDIBLY useful!*/
 input[type="text"], input[type="number"], input[type="tel"] {
   padding: 5px 10px;
+  float: right;
+}
+
+form p {
+  margin: 10px 0 5px 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+form div {
+  width: 258px;
+  margin: 0 auto;
 }
 
 input[type="submit"] {
   border: none;
-  padding: 8px 22px;
-  border-radius: 5px;
-  color: white;
-  background: #202b19;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  margin-bottom: 10px;
+  padding: 5px 15px;
   transition: 750ms all;
   cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
+  transition: 500ms all;
 }
 
-input[type="submit"]:hover {
+.new_store {
+  background: #202b19;
+}
+
+.new_store:hover {
   background: #547042;
+  cursor: pointer;
 }
 
+/* Table Styles */
 table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -252,49 +313,6 @@ th {
   font-weight: bold;
 }
 
-/* Form Styles */
-
-form {
-  font-family: "Open Sans", sans-serif;
-  border: 1px solid #202b19;
-  border-radius: 8px;
-}
-
-legend {
-  padding-left: 20px;
-}
-
-label {
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.formlist li {
-  display: inline-block;
-  margin-top: 5px;
-  padding-left: 20px;
-  justify-content: space-around;
-}
-
-input[type="submit"] {
-  border-radius: 8px;
-  font-family: "Open Sans", sans-serif;
-  color: #ffffff;
-  font-size: 16px;
-  margin: 0 0 10px 10px;
-  padding: 5px 15px;
-  text-decoration: none;
-  transition: 500ms all;
-}
-
-.new_store {
-  background: #652914;
-}
-
-.new_store:hover {
-  background: #B25535;
-  cursor: pointer;
-}
 
 /* Footer Styles */
 footer {

@@ -152,9 +152,9 @@ function handleNewStoreSubmit(event){
   var maxCustsPerHour = event.target.maxCustsPerHour.value;
   var avgCookiesPerCust = event.target.avgCookiesPerCust.value;
 
-  if (!identifier || !storeName || !storeAddress || !storePhone || !minCustsPerHour || !maxCustsPerHour || !avgCookiesPerCust) {
-    return alert('Fields cannot be empty!');
-  }
+  // if (!identifier || !storeName || !storeAddress || !storePhone || !minCustsPerHour || !maxCustsPerHour || !avgCookiesPerCust) {
+  //   return alert('Fields cannot be empty!');
+  // }
 
   var newStore = new CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust);
 

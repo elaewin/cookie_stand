@@ -9,8 +9,8 @@
 <header>
   <div><a href="../index.html"><img src="../images/fishlogo.png"></a>
     <ul>
-      <li><a href="sales.html">Sales</a></li>
-      <li><a href="style.html">Style Guide</a></li>
+      <li class="current"><a href="sales.html">Sales</a></li>
+      <li><a href="guide.html">Style Guide</a></li>
     <ul>
   </div>
 </header>
@@ -22,39 +22,42 @@
         <ul class="formlist">
           <li>
             <label for="storeName">Store Name:</label>
-            <input id="storeName" type="text" name="storeName" placeholder="Store name or location" />
+            <input id="storeName" type="text" name="storeName" placeholder="Store name or location" required="required">
           </li>
           <li>
             <label for="identifier">Store ID:</label>
-            <input id="identifier" type="text" name="identifier" placeholder="A single word id" />
+            <input id="identifier" type="text" name="identifier" placeholder="A single word id" required="required">
           </li>
         </ul>
         <ul class="formlist">
           <li>
             <label for="storeAddress">Address:</label>
-            <input id="storeAddress" type="text" name="storeAddress">
+            <input id="storeAddress" type="text" name="storeAddress" required="required">
           </li>
           <li>
             <label for="storePhone">Phone:</label>
-            <input id="storePhone" type="tel" name="storePhone">
+            <input id="storePhone" type="tel" name="storePhone" required="required">
           </li>
         </ul>
+        <p>Customers Per Hour:</p>
         <ul class="formlist">
           <li>
-            <label for="minCustsPerHour">Min. Cust/Hour:</label>
-            <input id="minCustsPerHour" type="number" name="minCustsPerHour" placeholder="Must be a number">
+            <label for="minCustsPerHour">Minimum:</label>
+            <input id="minCustsPerHour" type="number" name="minCustsPerHour" placeholder="Must be a number" required="required">
           </li>
           <li>
-            <label for="maxCustsPerHour">Max. Cust/Hour:</label>
-            <input id="maxCustsPerHour" type="number" name="maxCustsPerHour" placeholder="Must be a number">
+            <label for="maxCustsPerHour">Maximum:</label>
+            <input id="maxCustsPerHour" type="number" name="maxCustsPerHour" placeholder="Must be a number" required="required">
           </li>
           <li>
-            <label for="avgCookiesPerCust">Avg. Cookies Sold:</label>
-            <input id="avgCookiesPerCust" type="number" name="avgCookiesPerCust" placeholder="Must be a number">
+            <label for="avgCookiesPerCust">Avg. # of Cookies:</label>
+            <input id="avgCookiesPerCust" type="number" name="avgCookiesPerCust" placeholder="Must be a number" required="required">
           </li>
         </ul>
       </fieldset>
+      <div>
         <input type="submit" value="Submit New Store Information" class="new_store">
+      </div>
     </form>
     <table id="sales" class="data"></table>
   </main>
