@@ -59,10 +59,7 @@ function CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerH
     if((rowColorCheck % 2) === 0) {
       trEl.className = 'grey';
     }
-    var tdEl = document.createElement('td');
-    tdEl.className = 'v_header';
-    tdEl.textContent = storeName;
-    trEl.appendChild(tdEl);
+    buildElement('td', storeName, trEl, 'class', 'v_header');
     buildElement('td', salesTotal, trEl);
     for(var i = 0; i < this.cookiesPerHourArray.length; i++) {
       buildElement('td', this.cookiesPerHourArray[i], trEl);
@@ -116,7 +113,7 @@ function makeHeaderRow() {
 function makeFooterRow() {
   var trEl = document.createElement('tr');
   trEl.className = 'table_footer';
-  buildElement('td', '', trEl); // blank space in footer row
+  buildElement('td', 'Total', trEl);
   var grandTotal = 0;
   for(var i = 0; i < allStoresArray.length; i++) {
     grandTotal += allStoresArray[i].dailySalesTotal;
@@ -151,10 +148,6 @@ function handleNewStoreSubmit(event){
   var minCustsPerHour = event.target.minCustsPerHour.value;
   var maxCustsPerHour = event.target.maxCustsPerHour.value;
   var avgCookiesPerCust = event.target.avgCookiesPerCust.value;
-
-  if (!identifier || !storeName || !storeAddress || !storePhone || !minCustsPerHour || !maxCustsPerHour || !avgCookiesPerCust) {
-    return alert('Fields cannot be empty!');
-  }
 
   var newStore = new CookieHut(identifier, storeName, storeAddress, storePhone, minCustsPerHour, maxCustsPerHour, avgCookiesPerCust);
 

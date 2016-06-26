@@ -1,5 +1,3 @@
-/* REMOVE ALL TEXT SHADOWS */
-
 /* BASE STYLES */
 
 body {
@@ -76,20 +74,38 @@ main {
   margin: 0 auto;
 }
 
+a:link {
+  color: #b25535;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #652914;
+}
+
+a:hover {
+  color: #b25535;
+  font-weight: bold;
+}
+
+a:active {
+  color: #fe8c65;
+  font-weight: bold;
+}
+
 .banner {
   height: 300px;
   width: 960px;
-  margin: 30px auto;
+  margin: 30px auto 60px;
   background-image: url('../images/salmon-transparent.png');
   background-size: contain;
 }
 
 h1 {
-  font-size: 80px;
-  padding: 120px 0 30px;
+  font-size: 3em;
 }
 
-h2, h3, h4, h5 {
+h1, h2, h3, h4, h5 {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   line-height: normal;
@@ -114,7 +130,7 @@ h5 {
   margin-bottom: 5px;
 }
 
-h1, main div h2 {
+.front_page, .banner_subhead {
   color: #652914;
   font-family: "Contrail One", cursive;
   letter-spacing: 2px;
@@ -122,15 +138,20 @@ h1, main div h2 {
   text-align: center;
 }
 
-main div h2 {
+.front_page {
+  font-size: 80px;
+  padding: 90px 0 0;
+}
+
+.banner_subhead {
   font-size: 30px;
-  padding: 30px 0;
+  padding: 10px 0;
 }
 
 blockquote {
   margin: 15px 0;
   padding: 10px;
-  border: 2px solid #B25535;
+  border: 2px solid #b25535;
   font-style: italic;
   font-weight: bold;
   background-color: rgba(84, 112, 66, 0.3);
@@ -148,6 +169,7 @@ blockquote {
 
 blockquote p {
   text-align: center;
+  margin-bottom: 0;
 }
 
 main ul .merch {
@@ -167,57 +189,188 @@ main ul li:last-child {
 .merch_overlay {
   position: absolute;
   bottom: 0;
-  height: 60px;
+  height: 80px;
   width: 300px;
-  background-color: rgba(84, 112, 66, 0.6);
+  background-color: rgba(84, 112, 66, 0.5);
 }
 
-main ul li div h4 {
-  margin-top: 15px;
+main ul li div h3 {
+  margin-top: 20px;
   text-align: center;
+  /*color: #fff;*/
 }
 
 p {
   font-family: Lora, serif;
   font-size: 16px;
   line-height: 28px;
+  margin-bottom: 15px;
+}
+
+/* About Page Styles */
+
+.family_photo {
+  width: 723px;
+  margin: 30px auto 0;
+}
+
+.chinook {
+  width: 480px;
+  height: 182px;
+  margin: 0px 240px 30px;
+}
+
+/* Shop Page Styles */
+
+.shop_banner {
+  width: 960px;
+  height: 150px;
+  margin: 30px 0;
+  background-image: url('../images/salmon-small.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.shop_banner h1 {
+  text-align: center;
+  padding-top: 60px;
+  color: #652914;
+  font-family: "Contrail One", cursive;
+  text-transform: uppercase;
+  font-size: 3.5em;
+}
+
+#shop .merch {
+  margin-bottom: 60px;
+}
+
+figure img {
+  width: 300px;
+  height: 300px;
+}
+
+figcaption {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Locations Page Styles */
+
+#locations ul {
+  clear: both;
+}
+
+#locations li {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+#locations li:last-child {
+  margin-right: 0px;
+}
+
+#locations div {
+  width: 450px;
+  height: 300px;
+}
+
+#locations div img {
+  float: left;
+  margin-right: 30px;
+}
+
+#locations div p {
+  font-family: "Open Sans", sans-serif;
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+#locations div h5 {
+  padding-top: 180px;
+}
+
+.times {
+  text-align: center;
+  font-size: 1.25em;
 }
 
 /* Sales Page Styles */
+.formlist li {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  min-width: 235px;
+  justify-content: space-around;
+}
+
 form {
   margin: 10px 10px 0;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid #202b19;
+  border-radius: 8px;
 }
 
 fieldset {
   border: none;
-  margin: 20px 0; /* don't need the unit on the 0 */
+  margin: 5px 0;
 }
 
-label[for="minCustsPerHour"] {
-  display: block;
+legend {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 0;
+}
+
+label {
+  font-size: 12px;
+  text-transform: uppercase;
+  width: 80px;
 }
 
 /* attribute selector...INCREDIBLY useful!*/
 input[type="text"], input[type="number"], input[type="tel"] {
   padding: 5px 10px;
+  float: right;
+}
+
+form p {
+  margin: 10px 0 5px 20px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+}
+
+form div {
+  width: 258px;
+  margin: 0 auto;
 }
 
 input[type="submit"] {
   border: none;
-  padding: 8px 22px;
-  border-radius: 5px;
-  color: white;
-  background: #202b19;
+  border-radius: 8px;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  margin-bottom: 15px;
+  padding: 5px 15px;
   transition: 750ms all;
   cursor: pointer;
-  margin-left: auto;
-  margin-right: auto;
+  transition: 500ms all;
 }
 
-input[type="submit"]:hover {
+.new_store {
+  background: #202b19;
+}
+
+.new_store:hover {
   background: #547042;
+  cursor: pointer;
 }
 
+/* Table Styles */
 table {
   border: 1px solid black;
   border-collapse: collapse;
@@ -252,49 +405,6 @@ th {
   font-weight: bold;
 }
 
-/* Form Styles */
-
-form {
-  font-family: "Open Sans", sans-serif;
-  border: 1px solid #202b19;
-  border-radius: 8px;
-}
-
-legend {
-  padding-left: 20px;
-}
-
-label {
-  font-size: 12px;
-  text-transform: uppercase;
-}
-
-.formlist li {
-  display: inline-block;
-  margin-top: 5px;
-  padding-left: 20px;
-  justify-content: space-around;
-}
-
-input[type="submit"] {
-  border-radius: 8px;
-  font-family: "Open Sans", sans-serif;
-  color: #ffffff;
-  font-size: 16px;
-  margin: 0 0 10px 10px;
-  padding: 5px 15px;
-  text-decoration: none;
-  transition: 500ms all;
-}
-
-.new_store {
-  background: #652914;
-}
-
-.new_store:hover {
-  background: #B25535;
-  cursor: pointer;
-}
 
 /* Footer Styles */
 footer {

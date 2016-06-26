@@ -5,6 +5,8 @@ Codefellows 201 week 2 lab project repo
 
 Using Open Sans 400, Open Sans 700 (bold), Contrail One, and Lora from Google Fonts.
 
+All store images were found via a Google Creative Commons image search.
+
 Palettes:
 
 * [Greens](http://paletton.com/palette.php?uid=32D0u0kdp697dgQ6S8piZ5foE3Z)
